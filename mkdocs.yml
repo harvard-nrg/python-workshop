@@ -1,0 +1,32 @@
+site_name: Python for Neuroimaging
+theme:
+  name: material
+markdown_extensions:
+  - admonition
+  - codehilite
+  - pymdownx.details
+  - pymdownx.superfences
+nav:
+  - 'Introduction': index.md
+  - 'Variables and primitive types': basics.md
+  - 'Math operators': math.md
+  - 'Data structures':
+    - 'List': list.md
+    - 'Set': set.md
+    - 'Dict': dict.md
+    - 'Tuple': tuple.md
+  - 'Print and string formatting': print.md
+  - 'Control flow':
+    - 'operators': conditional.md
+    - 'if': if.md
+    - 'for': for.md
+    - 'while': while.md
+  - 'Functions': functions.md
+  - 'Importing modules': modules.md
+  - 'Subprocesses': subprocess.md
+  - 'Writing command line tools': cli.md
+  - 'Reading and writing files': files.md
+  - 'Virtual environments': virtualenv.md 
+  - 'DICOM and NIFTI': formats.md
+  - 'Machine learning primer': learn.md
+  - 'Recommendations': recommendations.md
