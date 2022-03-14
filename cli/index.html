@@ -1,0 +1,825 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.5">
+    
+    
+      
+        <title>Writing command line tools - Python for Neuroimaging</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.df84b5fe.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#writing-command-line-tools" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href=".." title="Python for Neuroimaging" class="md-header-nav__button md-logo" aria-label="Python for Neuroimaging">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Python for Neuroimaging
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Writing command line tools
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Python for Neuroimaging" class="md-nav__button md-logo" aria-label="Python for Neuroimaging">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Python for Neuroimaging
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../basics/" title="Variables and primitive types" class="md-nav__link">
+      Variables and primitive types
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../math/" title="Math operators" class="md-nav__link">
+      Math operators
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Data structures
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Data structures" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Data structures
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../list/" title="List" class="md-nav__link">
+      List
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../set/" title="Set" class="md-nav__link">
+      Set
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../dict/" title="Dict" class="md-nav__link">
+      Dict
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../tuple/" title="Tuple" class="md-nav__link">
+      Tuple
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../print/" title="Print and string formatting" class="md-nav__link">
+      Print and string formatting
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Control flow
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Control flow" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Control flow
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../conditional/" title="operators" class="md-nav__link">
+      operators
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../if/" title="if" class="md-nav__link">
+      if
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../for/" title="for" class="md-nav__link">
+      for
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../while/" title="while" class="md-nav__link">
+      while
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../functions/" title="Functions" class="md-nav__link">
+      Functions
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../modules/" title="Importing modules" class="md-nav__link">
+      Importing modules
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../subprocess/" title="Subprocesses" class="md-nav__link">
+      Subprocesses
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Writing command line tools
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="Writing command line tools" class="md-nav__link md-nav__link--active">
+      Writing command line tools
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basic-example" class="md-nav__link">
+    Basic example
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#real-world-example" class="md-nav__link">
+    Real world example
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#command-line-arguments" class="md-nav__link">
+    Command line arguments
+  </a>
+  
+    <nav class="md-nav" aria-label="Command line arguments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#defining" class="md-nav__link">
+    defining
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parsing" class="md-nav__link">
+    parsing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercises" class="md-nav__link">
+    Exercises
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../files/" title="Reading and writing files" class="md-nav__link">
+      Reading and writing files
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../virtualenv/" title="Virtual environments" class="md-nav__link">
+      Virtual environments
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../formats/" title="DICOM and NIFTI" class="md-nav__link">
+      DICOM and NIFTI
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../learn/" title="Machine learning primer" class="md-nav__link">
+      Machine learning primer
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../recommendations/" title="Recommendations" class="md-nav__link">
+      Recommendations
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basic-example" class="md-nav__link">
+    Basic example
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#real-world-example" class="md-nav__link">
+    Real world example
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#command-line-arguments" class="md-nav__link">
+    Command line arguments
+  </a>
+  
+    <nav class="md-nav" aria-label="Command line arguments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#defining" class="md-nav__link">
+    defining
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parsing" class="md-nav__link">
+    parsing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercises" class="md-nav__link">
+    Exercises
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="writing-command-line-tools">Writing command line tools</h1>
+<p>We've covered a lot of ground. Now that we have a handle on the Python 
+interpreter and some fundamental Python syntax, we can take the commands we've 
+been plugging into the interpreter and create a command line application.</p>
+<h2 id="basic-example">Basic example</h2>
+<p>To begin, open a new file named <code>hello.py</code> and enter the following contents</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello, World!&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Save the file and make it executable using the following <em>shell</em> command</p>
+<div class="highlight"><pre><span></span><code>% chmod u+x hello.py
+</code></pre></div>
+
+<p>Now you can execute your script from the command line</p>
+<div class="highlight"><pre><span></span><code>% ./hello.py
+Hello, World!
+</code></pre></div>
+
+<h2 id="real-world-example">Real world example</h2>
+<p>Let's take a look at a real-world example. The command line application shown 
+below will use the
+<a href="https://yaxil.readthedocs.io/en/latest/"><code>yaxil</code></a>
+package to query a public data set on <code>central.xnat.org</code>, retrieve all of the
+scan numbers, and download those scans into a directory named <code>./xnat-data</code></p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python</span>
+
+<span class="kn">import</span> <span class="nn">yaxil</span>
+
+<span class="n">xnat</span> <span class="o">=</span> <span class="s1">&#39;central-xnat&#39;</span>
+<span class="n">project</span> <span class="o">=</span> <span class="s1">&#39;CENTRAL_OASIS_LONG&#39;</span>
+<span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;OAS2_0001_MR2&#39;</span>
+<span class="n">out_dir</span> <span class="o">=</span> <span class="s1">&#39;./xnat-data&#39;</span>
+
+<span class="n">auth</span> <span class="o">=</span> <span class="n">yaxil</span><span class="o">.</span><span class="n">auth</span><span class="p">(</span><span class="n">xnat</span><span class="p">)</span>
+
+<span class="n">scan_ids</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">scan</span> <span class="ow">in</span> <span class="n">yaxil</span><span class="o">.</span><span class="n">scans</span><span class="p">(</span><span class="n">auth</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">project</span><span class="o">=</span><span class="n">project</span><span class="p">):</span>
+    <span class="n">scan_id</span> <span class="o">=</span> <span class="n">scan</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span>
+    <span class="n">scan_ids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">scan_id</span><span class="p">)</span>
+
+<span class="n">yaxil</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">auth</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">scan_ids</span><span class="p">,</span> <span class="n">out_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The only shortcoming is that the variables <code>xnat</code>, <code>project</code>, <code>label</code>, and 
+<code>out_dir</code> are baked into the application. The next section will show you how 
+to turn these into <em>command line arguments</em>.</p>
+<h2 id="command-line-arguments">Command line arguments</h2>
+<p>Suppose that you wrote a XNAT downloader script, named <code>downloader.py</code>, that 
+you wanted to accept <code>xnat</code>, <code>project</code>, <code>label</code>, and <code>out_dir</code> on the command 
+line</p>
+<div class="highlight"><pre><span></span><code>% ./downloader.py --xnat central-xnat --project CENTRAL_OASIS_LONG --label OAS2_0001_MR2 --out-dir ./xnat-data
+</code></pre></div>
+
+<p>You can certainly access the raw command line arguments by importing the <code>sys</code> 
+module and sifting through <code>sys.argv</code></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+</code></pre></div>
+
+<p>But that's going to be a lot of work to parse. Fortunately, there's a much 
+cleaner way to define and parse command line arguments using one of my favorite 
+modules, 
+<a href="https://docs.python.org/3/library/argparse.html"><code>argparse</code></a>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Read the docs</p>
+<p>The <code>argparse</code> module is truly brilliant. The functionality demonstrated 
+here does not do it justice. I highly recommend that you take the time to 
+browse the official documentation 
+<a href="https://docs.python.org/3/library/argparse.html">here</a>.</p>
+</div>
+<h3 id="defining">defining</h3>
+<p>First, import the <code>argparse</code> module and create an 
+<a href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser"><code>argparse.ArgumentParser</code></a> 
+object</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">argparse</span>
+
+<span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Now, add your arguments to the <code>parser</code> object by calling 
+<a href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser.add_argument"><code>parser.add_argument()</code></a></p>
+<div class="highlight"><pre><span></span><code><span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--xnat&#39;</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--project&#39;</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--label&#39;</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--out-dir&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h3 id="parsing">parsing</h3>
+<p>Now you can call
+<a href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser.parse_args"><code>parser.parse_args()</code></a>
+to parse the user supplied command line arguments</p>
+<div class="highlight"><pre><span></span><code><span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+</code></pre></div>
+
+<p>To access each argument, take the argument name, remove any leading dashes <code>-</code>, 
+replace any embedded dashes <code>-</code> with an underscore <code>_</code>, and you should be able 
+to access that property on the <code>args</code> object</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;xnat is&#39;</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">xnat</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;project is&#39;</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">project</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;label is&#39;</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;out_dir is&#39;</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">out_dir</span><span class="p">)</span>
+</code></pre></div>
+
+<h2 id="exercises">Exercises</h2>
+<div class="admonition tip">
+<p class="admonition-title">Exercise 1</p>
+<p>Try adding command line arguments to the
+<a href="#real-world-example">real world example</a>.</p>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../subprocess/" title="Subprocesses" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Subprocesses
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../files/" title="Reading and writing files" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Reading and writing files
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.83fe6e3c.min.js"></script>
+      <script src="../assets/javascripts/bundle.7e1cb91c.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.37585f48.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

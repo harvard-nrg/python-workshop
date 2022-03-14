@@ -1,0 +1,932 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.5">
+    
+    
+      
+        <title>Virtual environments - Python for Neuroimaging</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.df84b5fe.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#installing-packages" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href=".." title="Python for Neuroimaging" class="md-header-nav__button md-logo" aria-label="Python for Neuroimaging">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Python for Neuroimaging
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Virtual environments
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Python for Neuroimaging" class="md-nav__button md-logo" aria-label="Python for Neuroimaging">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Python for Neuroimaging
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../basics/" title="Variables and primitive types" class="md-nav__link">
+      Variables and primitive types
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../math/" title="Math operators" class="md-nav__link">
+      Math operators
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Data structures
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Data structures" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Data structures
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../list/" title="List" class="md-nav__link">
+      List
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../set/" title="Set" class="md-nav__link">
+      Set
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../dict/" title="Dict" class="md-nav__link">
+      Dict
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../tuple/" title="Tuple" class="md-nav__link">
+      Tuple
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../print/" title="Print and string formatting" class="md-nav__link">
+      Print and string formatting
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Control flow
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Control flow" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Control flow
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../conditional/" title="operators" class="md-nav__link">
+      operators
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../if/" title="if" class="md-nav__link">
+      if
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../for/" title="for" class="md-nav__link">
+      for
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../while/" title="while" class="md-nav__link">
+      while
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../functions/" title="Functions" class="md-nav__link">
+      Functions
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../modules/" title="Importing modules" class="md-nav__link">
+      Importing modules
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../subprocess/" title="Subprocesses" class="md-nav__link">
+      Subprocesses
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../cli/" title="Writing command line tools" class="md-nav__link">
+      Writing command line tools
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../files/" title="Reading and writing files" class="md-nav__link">
+      Reading and writing files
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Virtual environments
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="Virtual environments" class="md-nav__link md-nav__link--active">
+      Virtual environments
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a-brief-history" class="md-nav__link">
+    A brief history
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pip-install" class="md-nav__link">
+    pip install
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pip-install-user" class="md-nav__link">
+    pip install --user
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#virtual-environments" class="md-nav__link">
+    Virtual environments
+  </a>
+  
+    <nav class="md-nav" aria-label="Virtual environments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create" class="md-nav__link">
+    create
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activate" class="md-nav__link">
+    activate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deactivate" class="md-nav__link">
+    deactivate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-packages_1" class="md-nav__link">
+    installing packages
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependency-management" class="md-nav__link">
+    Dependency management
+  </a>
+  
+    <nav class="md-nav" aria-label="Dependency management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dependency-graph" class="md-nav__link">
+    dependency graph
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pipenv" class="md-nav__link">
+    pipenv
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../formats/" title="DICOM and NIFTI" class="md-nav__link">
+      DICOM and NIFTI
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../learn/" title="Machine learning primer" class="md-nav__link">
+      Machine learning primer
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../recommendations/" title="Recommendations" class="md-nav__link">
+      Recommendations
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a-brief-history" class="md-nav__link">
+    A brief history
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pip-install" class="md-nav__link">
+    pip install
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pip-install-user" class="md-nav__link">
+    pip install --user
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#virtual-environments" class="md-nav__link">
+    Virtual environments
+  </a>
+  
+    <nav class="md-nav" aria-label="Virtual environments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create" class="md-nav__link">
+    create
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activate" class="md-nav__link">
+    activate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deactivate" class="md-nav__link">
+    deactivate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-packages_1" class="md-nav__link">
+    installing packages
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependency-management" class="md-nav__link">
+    Dependency management
+  </a>
+  
+    <nav class="md-nav" aria-label="Dependency management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dependency-graph" class="md-nav__link">
+    dependency graph
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pipenv" class="md-nav__link">
+    pipenv
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="installing-packages">Installing packages</h1>
+<div class="admonition attention">
+<p class="admonition-title">Read this section to the end before doing anything</p>
+<p>I encourage you to read this entire section before attempting to install 
+anything.</p>
+</div>
+<p>Python has a thriving ecosystem and you should absolutely install and try as m
+any different libraries as possible. The following section will walk you 
+through most of the installation options at your disposal.</p>
+<h2 id="a-brief-history">A brief history</h2>
+<p>The original package manager for Python was <code>easy_install</code>, but you 
+shouldn't use it to install anything except for
+<a href="https://pip.pypa.io/en/stable/"><code>pip</code></a></p>
+<div class="highlight"><pre><span></span><code>sudo easy_install pip
+</code></pre></div>
+
+<h2 id="pip-install"><code>pip install</code></h2>
+<p>The most basic command <code>pip</code> offers to install packages is</p>
+<div class="admonition attention">
+<p>This command is for illustrative purposes. Don't run it.</p>
+</div>
+<div class="highlight"><pre><span></span><code>pip install pydicom
+</code></pre></div>
+
+<p>Unfortunatley, <code>pip</code> will by default attempt to install the package into a 
+system location which requires 
+<a href="https://en.wikipedia.org/wiki/Superuser">administrative</a>
+privileges. More often than not, you're not going to be able to use this 
+option.</p>
+<h2 id="pip-install-user"><code>pip install --user</code></h2>
+<p>You <em>can</em> however instruct <code>pip</code> to install packages into your home directory 
+using</p>
+<div class="highlight"><pre><span></span><code><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="n">pydicom</span>
+</code></pre></div>
+
+<p>This will install the package under <code>~/.local</code> on Linux or <code>~/Library/Python</code> 
+on macOS. To install into a custom location, there is also the <code>--target</code> 
+option. </p>
+<div class="admonition note">
+<p class="admonition-title">Dependency conflicts</p>
+<p>You may run into issues when working on two or more projects that depend 
+on different versions of the same package. This is an important use case 
+for virtual environments. Keep reading. </p>
+</div>
+<h2 id="virtual-environments">Virtual environments</h2>
+<p>Ideally, for each software project you would have a separate Python 
+installation and within that installation you could control exactly which 
+external packages are installed. This is the purpose behind 
+<em>virtual environments</em>. </p>
+<div class="admonition attention">
+<p class="admonition-title">virtualenv</p>
+<p>Prior to Python 3.3, virtual environments were  made possible by way of an 
+external package
+<a href="https://virtualenv.pypa.io/en/latest/"><code>virtualenv</code></a>.
+Fortunately, this functionality is now 
+<a href="https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments"><u>built into Python 3</u></a>
+without the need for additional installs.</p>
+</div>
+<h3 id="create">create</h3>
+<p>To create a virtual environment, execute the following <em>shell</em> command</p>
+<div class="highlight"><pre><span></span><code>% python -m venv <span class="nb">test</span>
+</code></pre></div>
+
+<p>This will create a directory named <code>test</code>. Congratulations 🎉 you now have a 
+virtual environment.</p>
+<div class="admonition question">
+<p class="admonition-title">Where is Python installed</p>
+<p>Before moving forward, take note of the location of the <code>python</code> executable 
+on your system. This location will change after you've activated your 
+virtual environment</p>
+<div class="highlight"><pre><span></span><code>which python
+</code></pre></div>
+
+</div>
+<h3 id="activate">activate</h3>
+<p>To activate your virtual environment, source the <code>activation</code> script</p>
+<div class="highlight"><pre><span></span><code>% <span class="nb">source</span> test/bin/activate
+</code></pre></div>
+
+<p>You shoule notice the string <code>(test)</code> has been prepended to your shell prompt.
+You're now using an isolated Python installation living under the <code>test</code> 
+directory. You may also notice that <code>which python</code> now points to the <code>python</code> 
+executable under your virtual environment.</p>
+<h3 id="deactivate">deactivate</h3>
+<p>To deactivate the virtual environment, execute the <code>deactivate</code> command. 
+Deactivation will return you to the original Python installation </p>
+<div class="highlight"><pre><span></span><code><span class="o">(</span><span class="nb">test</span><span class="o">)</span> % deactivate
+</code></pre></div>
+
+<h3 id="installing-packages_1">installing packages</h3>
+<p>Once your virtual environment has been activated, you can proceed to install 
+any external packages. These will be conveniently installed under your virtual 
+environment directory</p>
+<div class="highlight"><pre><span></span><code><span class="o">(</span><span class="nb">test</span><span class="o">)</span> % pip install pydicom
+</code></pre></div>
+
+<h2 id="dependency-management">Dependency management</h2>
+<p>The deeper you dive into dependency management, the more you're going to find. 
+Reading up on
+<a href="https://en.wikipedia.org/wiki/Reproducible_builds">deterministic builds</a>
+is a fun place to start.</p>
+<h3 id="dependency-graph">dependency graph</h3>
+<p>Just as you have your dependencies, you must also consider that your 
+dependencies have their own dependencies too. You might even have overlapping 
+dependencies. This is where things can get messy.</p>
+<p>If we explore the dependency graph for the 
+<a href="https://github.com/harvard-nrg/yaxil"><code>yaxil</code></a>
+project — which is a rather small project — you'll see the following 
+dependency graph</p>
+<div class="highlight"><pre><span></span><code>yaxil==0.4.3
+  - arrow [required: Any, installed: 0.15.5]
+    - python-dateutil [required: Any, installed: 2.8.1]
+      - six [required: &gt;=1.5, installed: 1.14.0]
+  - lxml [required: Any, installed: 4.5.0]
+  - pyaml [required: Any, installed: 19.12.0]
+    - PyYAML [required: Any, installed: 5.3]
+  - pydicom [required: Any, installed: 1.4.1]
+  - requests [required: Any, installed: 2.22.0]
+    - certifi [required: &gt;=2017.4.17, installed: 2019.11.28]
+    - chardet [required: &gt;=3.0.2,&lt;3.1.0, installed: 3.0.4]
+    - idna [required: &gt;=2.5,&lt;2.9, installed: 2.8]
+    - urllib3 [required: &gt;=1.21.1,&lt;1.26,!=1.25.1,!=1.25.0, installed: 1.25.8]
+  - six [required: Any, installed: 1.14.0]
+</code></pre></div>
+
+<p>You can see here that <code>yaxil</code> depends directly on <code>arrow</code>, <code>lxml</code>, <code>pydicom</code>, 
+<code>requests</code>, and <code>six</code>. That's just at the root level. Each of those 
+dependencies have their own dependencies too, sometimes with even greater 
+specificity. Looking more closely, you'll see that <code>arrow</code> depends on 
+<code>python-dateutil</code> which in turn depends on <code>six &gt;= 1.5</code>. Coincidentally, 
+<code>yaxil</code> also depends on <code>six</code>. Fortunately, it will accept any version. But 
+what if it didn't? If these two packages had conflicting requirements, there 
+would be a <em>dependency conflict</em> and you may not be alerted to this.</p>
+<h3 id="pipenv"><code>pipenv</code></h3>
+<p><a href="https://pipenv.pypa.io/en/latest/">Pipenv</a>
+is a wonderful new tool that not only allows you to document your dependencies, 
+it can also resolve your dependency graph and let you know if and where you've 
+introduced a dependency conflict.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../files/" title="Reading and writing files" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Reading and writing files
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../formats/" title="DICOM and NIFTI" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                DICOM and NIFTI
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.83fe6e3c.min.js"></script>
+      <script src="../assets/javascripts/bundle.7e1cb91c.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.37585f48.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
