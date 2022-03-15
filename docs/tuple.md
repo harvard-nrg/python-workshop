@@ -2,11 +2,14 @@
 
 ## Tuples
 
-Tuples are similar lists in some ways, except that they cannot be changed after 
-they are created. In other words, they're 
-[immutable](https://en.wikipedia.org/wiki/Immutable_object).
-A tuple begins and ends with parentheses `()` and items are separated by 
-commas. Spaces don't matter
+Tuples are effectively an
+[immutable](https://en.wikipedia.org/wiki/Immutable_object)
+list. Once a tuple has been defined, you cannot add, update, or delete items 
+from it. A tuple begins and ends with parentheses `()` and items are separated 
+by a comma `,`
+
+!!! note ""
+    Spaces don't matter here.
 
 ```python
 a = ( 1, 2, 3 )
@@ -14,9 +17,9 @@ a = ( 1, 2, 3 )
 
 ## Indexing
 
-Like many other 
-[iterables](https://docs.python.org/3/glossary.html#term-iterable)
-we've encountered, you can index and
+Like other 
+[iterable](https://docs.python.org/3/glossary.html#term-iterable)
+types in Python, you can index and
 [slice](https://docs.python.org/3/library/functions.html#slice)
 tuples
 
@@ -30,22 +33,22 @@ a[::2]
 
 Often used in
 [`for`](/for)
-loops, you can _unpack_ a tuple into individual variables using the following 
-syntax
+loops, you can _unpack_ a tuple into individual variables
 
 ```python
 a, b, c = ( 1, 2, 3 )
 ```
 
-In this case `a` would be equal to `1`, `b` equal to `2`, and `c` equal to `3`.
+In this case `a = 1`, `b = 2`, and `c = 3`. Remember this pattern as it often 
+appears in code and documentation.
 
 ## Immutability
 
-The immutability property of tuples is needed in some situations. For example, 
-only immutable types in Python can be 
-[hashed](https://en.wikipedia.org/wiki/Hash_function) 
-and only hashable types can be used as dictionary keys. In other words, you can 
-do this
+The immutability property of a tuple is desirable under some 
+circumstances. For example, only immutable types in Python can be 
+[hashed](https://en.wikipedia.org/wiki/Hash_function)
+and only hashable types can be used as dictionary keys. For example,
+this is perfectly legal code
 
 ```python
 a = {
@@ -55,10 +58,12 @@ a = {
 }
 ```
 
-Now you can retrieve an item from this dictionary using `( 'StudyA', 'Subject2' )` 
-as opposed to maintaining a second lookup table
+!!! note ""
+    Note that you cannot hash a tuple if it contains a mutable type.
+
+and subsequently you can retrieve an item from this dictionary using 
+`('StudyA','Subject2')`
 
 ```python
 a[( 'StudyA', 'Subject2' )]
 ```
-

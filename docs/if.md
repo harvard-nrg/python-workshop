@@ -1,24 +1,23 @@
 # Control flow
 
+!!! warning "Indentation is important" 
+    Python uses indentation or the 
+    [off-side rule](https://en.wikipedia.org/wiki/Off-side_rule)
+    to declare a _block_ of code. A
+    [code block](https://en.wikipedia.org/wiki/Block_(programming))
+    is considered _open_ on indent and _closed_ on dedent.
+
 ## The `if` condition
 
-The `if` statement allows you to decide whether or not to execute a block of 
-code based on the outcome of a truth condition. The general syntax of an `if` 
-statement is
+The general syntax of an `if` statement in Python is
 
 ```python
 if condition:
-  code to run if True
+  code to execute if True
 ```
 
-!!! warning "Indentation is critically important" 
-    Python uses indentation to denote a block of code. Part of the reason is 
-    to enforce consistent 
-    [coding style](https://www.python.org/dev/peps/pep-0008/).
-    A block of code is considered open on indent and closed on dedent. 
-
-Let's look at the trivial example below. Because `a == 10` returns `True`, the 
-indented block of code will be executed
+In the example below, since `a == 10` evaluates to `True` the indented block 
+of code will be executed
 
 ```python
 a = 10
@@ -29,8 +28,8 @@ if a == 10:
 
 ## The `else` clause
 
-If you want to run a different block of code if the evaluated condition returns 
-`False`, you can add an `else` clause
+If you want to execute a different block of code if the evaluated condition 
+returns `False`, you would use an `else` clause
 
 ```python
 if a == 0:
@@ -41,8 +40,8 @@ else:
 
 ## The `elif` clause
 
-We can further complicate this `if` statement by adding an `elif` clause, 
-which is short for "else if"
+We can further complicate this `if` statement with an `elif`, short for 
+_else if_
 
 ```python
 if a == 0:

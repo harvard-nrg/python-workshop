@@ -2,9 +2,11 @@
 
 ## Reading a file
 
-To read from file, simply open the file using the built-in 
+To read a file, open the file using the built-in 
 [`open()`](https://docs.python.org/3/library/functions.html#open)
-function and call `.read()` on the resulting file object
+function and call the
+[`.read()`](https://docs.python.org/3/tutorial/inputoutput.html#methods-of-file-objects)
+method on the resulting file object
 
 ```python
 fo = open('file.txt')
@@ -12,7 +14,7 @@ fo = open('file.txt')
 content = fo.read()
 ```
 
-To close the file, call `close()` on the file object
+To close the file, call the `.close()` method
 
 ```python
 fo.close()
@@ -20,23 +22,32 @@ fo.close()
 
 ### character encoding
 
-The result from calling `fo.read()` can sometimes yield a byte-string. Python 
-will not automatically decode strings for you. To decode the result, you must 
-know the character encoding and call the `.decode()` method. If the string is 
-in `utf-8` for example, you would call
+Calling `open()` on a file without any additional arguments will assume the 
+file being opened is a text file containing a UTF-8 encoded string. If you 
+know that is not the case, you need to open the file in _read binary mode_ 
+by passing `rb` as the second argument
 
 ```python
-content = content.decode('utf-8')
+fo = open('file.txt', 'rb')
+```
+
+Calling the `.read()` method on the resulting file object will now yield a 
+byte-string. To decode this byte-string, you must call `.decode()` with the 
+correct character encoding as the first argument
+
+```python
+content = content.decode('UTF-8')
 ```
 
 !!! tip ""
-    UTF-8 is common but by no means the only character encoding.
+    UTF-8 is quite common and backwards compatible with ASCII, but is 
+    certainly not the only character encoding.
 
 ## Writing a file
 
-The process for writing a file is similar to reading. Again, you need to 
-open the file using the built-in `open()` function, but this time you must 
-open the file in write mode using `w` as the second positional argument
+The process for writing a file is similar to reading. Simply open the file 
+using the built-in `open()` function, however you need to open the file in 
+_write mode_ by passing `w` as the second argument
 
 ```python
 fo = open('file.txt', 'w')
@@ -44,7 +55,7 @@ fo = open('file.txt', 'w')
 fo.write('Hello, World!\n')
 ```
 
-It's more important to call `.close()` after writing to a file to ensure that 
+It's more important to call `.close()` after writing a file to ensure that 
 the write buffer has been flushed to disk
 
 ```python
@@ -53,8 +64,8 @@ fo.close()
 
 ## Appending to a file
 
-Similar to writing, appending content to an existing file requires opening the 
-file in append mode using `a` as the second positional argument
+Appending content to an existing file requires opening the file in 
+_append mode_ by passing `a` as the second argument
 
 ```python
 fo = open('file.txt', 'a')
@@ -66,10 +77,10 @@ fo.close()
 
 ## File context manager
 
-Forgetting to call `close()` is a common mistake. Fortunately, the file 
+Forgetting to call `.close()` is a common mistake. Fortunately, the file 
 object returned by `open()` supports the 
 [context manager](https://docs.python.org/3/reference/datamodel.html#context-managers)
-interface. To use a context manager, you must wrap the function call in a 
+interface. To use a context manager, you wrap the function call in a 
 [`with` statement](https://docs.python.org/3/reference/compound_stmts.html#the-with-statement)
 
 ```python
@@ -77,18 +88,16 @@ with open('file.txt', 'w') as fo:
     fo.write('Hello, World!\n')
 ```
 
-The primary benefit is that as soon as you dedent the `with` block, the file 
-will be closed.
+The benefit is that as soon as you dedent the `with` block, the file will be 
+closed.
 
 ## CSV files
 
-Since reading 
-[CSV](https://en.wikipedia.org/wiki/Comma-separated_values)
-files is so common, we'll take some time to explore the 
+We'll take a moment to explore the
 [`csv`](https://docs.python.org/3/library/csv.html)
-module.
-
-To begin using the `csv` module, import it 
+module for reading a
+[CSV](https://en.wikipedia.org/wiki/Comma-separated_values)
+file. To begin using the `csv` module, import it 
 
 ```python
 import csv
@@ -134,24 +143,9 @@ is parsed and returned as a `list`
 
 ### Dictionary reader
 
-The first row of a CSV file usually contains column headers. It's fairly common 
+The first row of a CSV file usually contains column headers. It's useful to 
 to combine each row with the column headers so that you can retrive items using 
-`dict` indexing. Here's the long form version of this
-
-!!! attention ""
-    The example below is for illustrative purposes. There's a better way.
-
-```python
-fo = open('file.csv')
-reader = csv.reader(fo)
-headers = next(reader)              # get the first row
-for row in reader:                  # iterate over the remaining rows 
-    row = dict(zip(headers, row))   # combine headers and values
-    print(row['Metric 1'])
-```
-
-You shouldn't bother with all of that. This is so common that the `csv` module 
-includes a `csv.DictReader` to do it for you
+dictionary-based indexing. The `csv.DictReader` can do this for you
 
 ```python
 fo = open('file.csv')

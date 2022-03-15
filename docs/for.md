@@ -2,8 +2,7 @@
 
 ## The `for` loop
 
-A `for` loop allows the same block of code to be executed multiple times. The 
-general format of a `for` loop is as follows
+A `for` loop allows the same block of code to be executed multiple times
 
 ```python
 for item in iterable:
@@ -12,10 +11,10 @@ for item in iterable:
 
 ## Iteration
 
-Many of the data structures that we've encountered are 
-[iterable](https://docs.python.org/3/glossary.html#term-iterable).
-Suppose we have a `list` of scan information. Each item in the `list` is a 
-`dict` containing various scan properties
+Many of the data structures we've reviewed are defined as
+[iterables](https://docs.python.org/3/glossary.html#term-iterable)
+in Python. Suppose we have a list of scan information where each item in the 
+list contains a `dict` of scan properties
 
 ```python
 scans = [
@@ -39,8 +38,8 @@ scans = [
 ```
 
 If you want to retrieve the scan numbers for all `BOLD` scans, you could use a 
-`for` loop to iterate over the `scans` list and call the same block of code to 
-populate a `numbers` list
+`for` loop to iterate over `scans` and call the same block of code to populate 
+a list of scan numbers
 
 ```python
 numbers = []
@@ -52,11 +51,13 @@ for scan in scans:
 print(numbers)
 ```
 
-## Iterating over a `dict`
+This will print the result `[3, 4]`.
 
-It's also possible to iterate over a `dict`, but there are some slight 
+## Iterating over a dictionary
+
+It's common to iterate over a `dict`, however there are some subtle
 differences. By default, when you iterate over a `dict` you'll only receive 
-its keys. For example
+its keys
 
 ```python
 a = {
@@ -70,13 +71,15 @@ for key in a:
     print(value)
 ```
 
-If you want to iterate over the `dict` returning `key` and `value` pairs, you 
-can use the following syntax
+If you want to iterate over the `dict` returning both the `key` and `value` 
+pairs, you would use the following syntax
 
 ```python
-for key, value in a.items():
+for key,value in a.items():
     print('key =', key, 'value =', value)
 ```
 
-Note that the above `for` loop is using
-[tuple unpacking](/tuple/#unpacking).
+The `.items()` method on a dictionary will return all key/value pairs as a 
+list of tuples. The `for` loop shown above is
+[unpacking](/tuple/#unpacking)
+each tuple into the separate variables for `key` and `value`.

@@ -1,11 +1,7 @@
 # Machine learning
 
-Certaintly one of the better known software packages for machine learning in 
-Python is
-[scikit-learn](https://scikit-learn.org/stable/). 
-In this section, we'll dip our toes in with a simple 
-[classification](https://en.wikipedia.org/wiki/Statistical_classification)
-example.
+[scikit-learn](https://scikit-learn.org/stable/)
+is one of many excellent machine learning libraries for Python.
 
 !!! tip "Use a virtual environment"
     To have full control over installing the packages described within this
@@ -14,13 +10,13 @@ example.
 
 ## Installation
 
-To install scikit-learn, use `pip`
+Use `pip` to install `scikit-learn`
 
 ```bash
 pip install scikit-learn
 ```
 
-The name of the module you'll import will be `sklearn`
+The name of the module is `sklearn`
 
 ```python
 import sklearn

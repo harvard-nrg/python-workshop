@@ -2,7 +2,7 @@
 
 ## The `while` loop
 
-The `while` loop will execute the same block of code until a specified 
+A `while` loop will execute the same block of code until a specified 
 condition returns `True`. For example
 
 ```python
