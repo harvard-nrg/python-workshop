@@ -577,21 +577,24 @@
                 
                 
                 <h1 id="control-flow">Control flow</h1>
+<div class="admonition warning">
+<p class="admonition-title">Indentation is important</p>
+<p>Python uses indentation i.e., the 
+<a href="https://en.wikipedia.org/wiki/Off-side_rule">off-side rule</a>,
+to declare a <em>block</em> of code. A
+<a href="https://en.wikipedia.org/wiki/Block_(programming)">code block</a>
+is considered <em>open</em> on indent and <em>closed</em> on dedent. The Python community 
+prefers and occasionally even enforces the coding style defined in
+<a href="https://www.python.org/dev/peps/pep-0008/">PEP 8</a>.</p>
+</div>
 <h2 id="the-if-condition">The <code>if</code> condition</h2>
 <p>The general syntax of an <code>if</code> statement in Python is</p>
 <div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">condition</span><span class="p">:</span>
   <span class="n">code</span> <span class="n">to</span> <span class="n">execute</span> <span class="k">if</span> <span class="kc">True</span>
 </code></pre></div>
 
-<div class="admonition warning">
-<p class="admonition-title">Indentation is important</p>
-<p>Python uses indentation to denote a block of code. Part of the reason is 
-to enforce a consistent 
-<a href="https://www.python.org/dev/peps/pep-0008/">coding style</a>.
-A block of code is considered open on indent and closed on dedent. </p>
-</div>
-<p>Let's look at the trivial example below. Because <code>a == 10</code> returns <code>True</code>, the 
-indented block of code will be executed</p>
+<p>In the example below, since <code>a == 10</code> evaluates to <code>True</code> the indented block 
+of code will be executed</p>
 <div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
 
 <span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
@@ -599,8 +602,8 @@ indented block of code will be executed</p>
 </code></pre></div>
 
 <h2 id="the-else-clause">The <code>else</code> clause</h2>
-<p>If you want to run a different block of code if the evaluated condition returns 
-<code>False</code>, you can add an <code>else</code> clause</p>
+<p>If you want to execute a different block of code if the evaluated condition 
+returns <code>False</code>, you would use the <code>else</code> clause</p>
 <div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
   <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;condition is True&#39;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
@@ -608,8 +611,8 @@ indented block of code will be executed</p>
 </code></pre></div>
 
 <h2 id="the-elif-clause">The <code>elif</code> clause</h2>
-<p>We can further complicate this <code>if</code> statement by adding an <code>elif</code> clause, 
-which is short for "else if"</p>
+<p>We can further complicate this <code>if</code> statement with an <code>elif</code>, which is short 
+for "else if"</p>
 <div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
   <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a is equal to 0&#39;</span><span class="p">)</span>
 <span class="k">elif</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>

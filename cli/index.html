@@ -425,37 +425,30 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#basic-example" class="md-nav__link">
-    Basic example
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#real-world-example" class="md-nav__link">
-    Real world example
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#command-line-arguments" class="md-nav__link">
     Command line arguments
   </a>
   
-    <nav class="md-nav" aria-label="Command line arguments">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#argparse" class="md-nav__link">
+    argparse
+  </a>
+  
+    <nav class="md-nav" aria-label="argparse">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#defining" class="md-nav__link">
-    defining
+  <a href="#defining-command-line-arguments" class="md-nav__link">
+    defining command line arguments
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#parsing" class="md-nav__link">
-    parsing
+  <a href="#parsing-the-command-line" class="md-nav__link">
+    parsing the command line
   </a>
   
 </li>
@@ -466,8 +459,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#exercises" class="md-nav__link">
-    Exercises
+  <a href="#accessing-the-command-line-arguments" class="md-nav__link">
+    accessing the command line arguments
   </a>
   
 </li>
@@ -565,37 +558,30 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#basic-example" class="md-nav__link">
-    Basic example
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#real-world-example" class="md-nav__link">
-    Real world example
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#command-line-arguments" class="md-nav__link">
     Command line arguments
   </a>
   
-    <nav class="md-nav" aria-label="Command line arguments">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#argparse" class="md-nav__link">
+    argparse
+  </a>
+  
+    <nav class="md-nav" aria-label="argparse">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#defining" class="md-nav__link">
-    defining
+  <a href="#defining-command-line-arguments" class="md-nav__link">
+    defining command line arguments
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#parsing" class="md-nav__link">
-    parsing
+  <a href="#parsing-the-command-line" class="md-nav__link">
+    parsing the command line
   </a>
   
 </li>
@@ -606,8 +592,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#exercises" class="md-nav__link">
-    Exercises
+  <a href="#accessing-the-command-line-arguments" class="md-nav__link">
+    accessing the command line arguments
   </a>
   
 </li>
@@ -629,17 +615,14 @@
                 
                 
                 <h1 id="writing-command-line-tools">Writing command line tools</h1>
-<p>We've covered a lot of ground. Now that we have a handle on the Python 
-interpreter and some fundamental Python syntax, we can take the commands we've 
-been plugging into the interpreter and create a command line application.</p>
-<h2 id="basic-example">Basic example</h2>
-<p>To begin, open a new file named <code>hello.py</code> and enter the following contents</p>
+<p>To write a command line tool in Python, open a new plain text file named 
+<code>hello.py</code> and enter the following contents</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello, World!&#39;</span><span class="p">)</span>
 </code></pre></div>
 
-<p>Save the file and make it executable using the following <em>shell</em> command</p>
+<p>Save the file and make it executable by executing the following shell command</p>
 <div class="highlight"><pre><span></span><code>% chmod u+x hello.py
 </code></pre></div>
 
@@ -648,99 +631,60 @@ been plugging into the interpreter and create a command line application.</p>
 Hello, World!
 </code></pre></div>
 
-<h2 id="real-world-example">Real world example</h2>
-<p>Let's take a look at a real-world example. The command line application shown 
-below will use the
-<a href="https://yaxil.readthedocs.io/en/latest/"><code>yaxil</code></a>
-package to query a public data set on <code>central.xnat.org</code>, retrieve all of the
-scan numbers, and download those scans into a directory named <code>./xnat-data</code></p>
-<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python</span>
-
-<span class="kn">import</span> <span class="nn">yaxil</span>
-
-<span class="n">xnat</span> <span class="o">=</span> <span class="s1">&#39;central-xnat&#39;</span>
-<span class="n">project</span> <span class="o">=</span> <span class="s1">&#39;CENTRAL_OASIS_LONG&#39;</span>
-<span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;OAS2_0001_MR2&#39;</span>
-<span class="n">out_dir</span> <span class="o">=</span> <span class="s1">&#39;./xnat-data&#39;</span>
-
-<span class="n">auth</span> <span class="o">=</span> <span class="n">yaxil</span><span class="o">.</span><span class="n">auth</span><span class="p">(</span><span class="n">xnat</span><span class="p">)</span>
-
-<span class="n">scan_ids</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">scan</span> <span class="ow">in</span> <span class="n">yaxil</span><span class="o">.</span><span class="n">scans</span><span class="p">(</span><span class="n">auth</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">project</span><span class="o">=</span><span class="n">project</span><span class="p">):</span>
-    <span class="n">scan_id</span> <span class="o">=</span> <span class="n">scan</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span>
-    <span class="n">scan_ids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">scan_id</span><span class="p">)</span>
-
-<span class="n">yaxil</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">auth</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">scan_ids</span><span class="p">,</span> <span class="n">out_dir</span><span class="o">=</span><span class="n">out_dir</span><span class="p">)</span>
-</code></pre></div>
-
-<p>The only shortcoming is that the variables <code>xnat</code>, <code>project</code>, <code>label</code>, and 
-<code>out_dir</code> are baked into the application. The next section will show you how 
-to turn these into <em>command line arguments</em>.</p>
 <h2 id="command-line-arguments">Command line arguments</h2>
-<p>Suppose that you wrote a XNAT downloader script, named <code>downloader.py</code>, that 
-you wanted to accept <code>xnat</code>, <code>project</code>, <code>label</code>, and <code>out_dir</code> on the command 
-line</p>
-<div class="highlight"><pre><span></span><code>% ./downloader.py --xnat central-xnat --project CENTRAL_OASIS_LONG --label OAS2_0001_MR2 --out-dir ./xnat-data
+<p>Imagine that you want to write a script to download data from your local 
+<a href="https://xnat.org">XNAT</a>
+installation. You'll need to accept the command line arguments <code>--hostname</code>, 
+<code>--session</code>, and <code>--output-dir</code></p>
+<div class="highlight"><pre><span></span><code>% ./download.py --hostname xnat.example.com  <span class="se">\</span>
+                --session LABEL <span class="se">\</span>
+                --output-dir ./output
 </code></pre></div>
 
-<p>You can certainly access the raw command line arguments by importing the <code>sys</code> 
-module and sifting through <code>sys.argv</code></p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">sys</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
-</code></pre></div>
-
-<p>But that's going to be a lot of work to parse. Fortunately, there's a much 
-cleaner way to define and parse command line arguments using one of my favorite 
-modules, 
+<p>Python includes a traditional C-style parser
+<a href="https://docs.python.org/3/library/getopt.html"><code>getopt</code></a>,
+but there's a more convenient way to define and parse command line 
+arguments using
 <a href="https://docs.python.org/3/library/argparse.html"><code>argparse</code></a>.</p>
-<div class="admonition tip">
-<p class="admonition-title">Read the docs</p>
-<p>The <code>argparse</code> module is truly brilliant. The functionality demonstrated 
-here does not do it justice. I highly recommend that you take the time to 
-browse the official documentation 
-<a href="https://docs.python.org/3/library/argparse.html">here</a>.</p>
-</div>
-<h3 id="defining">defining</h3>
-<p>First, import the <code>argparse</code> module and create an 
-<a href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser"><code>argparse.ArgumentParser</code></a> 
-object</p>
+<h2 id="argparse">argparse</h2>
+<h3 id="defining-command-line-arguments">defining command line arguments</h3>
+<p>To define command line arguments, first import the <code>argparse</code> module and create 
+an instance of 
+<a href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser"><code>argparse.ArgumentParser</code></a> </p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">argparse</span>
 
 <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
 </code></pre></div>
 
-<p>Now, add your arguments to the <code>parser</code> object by calling 
-<a href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser.add_argument"><code>parser.add_argument()</code></a></p>
+<p>Now, you can add your arguments to the <code>parser</code> object by calling 
+<a href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser.add_argument"><code>parser.add_argument</code></a></p>
 <div class="highlight"><pre><span></span><code><span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
-<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--xnat&#39;</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--hostname&#39;</span><span class="p">)</span>
 <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--project&#39;</span><span class="p">)</span>
 <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--label&#39;</span><span class="p">)</span>
-<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--out-dir&#39;</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--output-dir&#39;</span><span class="p">)</span>
 </code></pre></div>
 
-<h3 id="parsing">parsing</h3>
-<p>Now you can call
-<a href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser.parse_args"><code>parser.parse_args()</code></a>
-to parse the user supplied command line arguments</p>
+<h3 id="parsing-the-command-line">parsing the command line</h3>
+<p>To parse the command line arguments entered by the user, simply call
+<a href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser.parse_args"><code>parser.parse_args</code></a></p>
 <div class="highlight"><pre><span></span><code><span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
 </code></pre></div>
 
-<p>To access each argument, take the argument name, remove any leading dashes <code>-</code>, 
-replace any embedded dashes <code>-</code> with an underscore <code>_</code>, and you should be able 
-to access that property on the <code>args</code> object</p>
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;xnat is&#39;</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">xnat</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;project is&#39;</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">project</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;label is&#39;</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;out_dir is&#39;</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">out_dir</span><span class="p">)</span>
+<h2 id="accessing-the-command-line-arguments">accessing the command line arguments</h2>
+<p>Each command line argument is automatically converted into a property on the 
+object returned by <code>parse_args()</code>. The name of the property is similar but 
+not identical to the name of the argument that was declared. There are two 
+translation rules to remember</p>
+<ul>
+<li>Remove any leading dashes e.g., <code>-</code> or <code>--</code>, from the argument name</li>
+<li>Replace any embedded dash <code>-</code> within the argument name with an underscore <code>_</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;host is </span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">hostname</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;project </span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">project</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;label is </span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">label</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;out_dir is </span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">output_dir</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </code></pre></div>
-
-<h2 id="exercises">Exercises</h2>
-<div class="admonition tip">
-<p class="admonition-title">Exercise 1</p>
-<p>Try adding command line arguments to the
-<a href="#real-world-example">real world example</a>.</p>
-</div>
                 
               
               

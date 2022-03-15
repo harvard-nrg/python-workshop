@@ -48,7 +48,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#installing-packages" class="md-skip">
+        <a href="#virtual-environments" class="md-skip">
           Skip to content
         </a>
       
@@ -449,58 +449,23 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#a-brief-history" class="md-nav__link">
-    A brief history
+  <a href="#creating-a-virtual-environment" class="md-nav__link">
+    Creating a virtual environment
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#pip-install" class="md-nav__link">
-    pip install
+  <a href="#activating-your-virtual-environment" class="md-nav__link">
+    Activating your virtual environment
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pip-install-user" class="md-nav__link">
-    pip install --user
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#virtual-environments" class="md-nav__link">
-    Virtual environments
-  </a>
-  
-    <nav class="md-nav" aria-label="Virtual environments">
+    <nav class="md-nav" aria-label="Activating your virtual environment">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#create" class="md-nav__link">
-    create
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#activate" class="md-nav__link">
-    activate
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#deactivate" class="md-nav__link">
     deactivate
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#installing-packages_1" class="md-nav__link">
-    installing packages
   </a>
   
 </li>
@@ -511,23 +476,23 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#dependency-management" class="md-nav__link">
-    Dependency management
+  <a href="#pip" class="md-nav__link">
+    pip
   </a>
   
-    <nav class="md-nav" aria-label="Dependency management">
+    <nav class="md-nav" aria-label="pip">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#dependency-graph" class="md-nav__link">
-    dependency graph
+  <a href="#upgrade-pip" class="md-nav__link">
+    upgrade pip
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#pipenv" class="md-nav__link">
-    pipenv
+  <a href="#dependency-management" class="md-nav__link">
+    dependency management
   </a>
   
 </li>
@@ -606,58 +571,23 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#a-brief-history" class="md-nav__link">
-    A brief history
+  <a href="#creating-a-virtual-environment" class="md-nav__link">
+    Creating a virtual environment
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#pip-install" class="md-nav__link">
-    pip install
+  <a href="#activating-your-virtual-environment" class="md-nav__link">
+    Activating your virtual environment
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pip-install-user" class="md-nav__link">
-    pip install --user
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#virtual-environments" class="md-nav__link">
-    Virtual environments
-  </a>
-  
-    <nav class="md-nav" aria-label="Virtual environments">
+    <nav class="md-nav" aria-label="Activating your virtual environment">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#create" class="md-nav__link">
-    create
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#activate" class="md-nav__link">
-    activate
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#deactivate" class="md-nav__link">
     deactivate
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#installing-packages_1" class="md-nav__link">
-    installing packages
   </a>
   
 </li>
@@ -668,23 +598,23 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#dependency-management" class="md-nav__link">
-    Dependency management
+  <a href="#pip" class="md-nav__link">
+    pip
   </a>
   
-    <nav class="md-nav" aria-label="Dependency management">
+    <nav class="md-nav" aria-label="pip">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#dependency-graph" class="md-nav__link">
-    dependency graph
+  <a href="#upgrade-pip" class="md-nav__link">
+    upgrade pip
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#pipenv" class="md-nav__link">
-    pipenv
+  <a href="#dependency-management" class="md-nav__link">
+    dependency management
   </a>
   
 </li>
@@ -710,115 +640,59 @@
                   
                 
                 
-                <h1 id="installing-packages">Installing packages</h1>
-<div class="admonition attention">
-<p class="admonition-title">Read this section to the end before doing anything</p>
-<p>I encourage you to read this entire section before attempting to install 
-anything.</p>
-</div>
-<p>Python has a thriving ecosystem and you should absolutely install and try as m
-any different libraries as possible. The following section will walk you 
-through most of the installation options at your disposal.</p>
-<h2 id="a-brief-history">A brief history</h2>
-<p>The original package manager for Python was <code>easy_install</code>, but you 
-shouldn't use it to install anything except for
-<a href="https://pip.pypa.io/en/stable/"><code>pip</code></a></p>
-<div class="highlight"><pre><span></span><code>sudo easy_install pip
-</code></pre></div>
-
-<h2 id="pip-install"><code>pip install</code></h2>
-<p>The most basic command <code>pip</code> offers to install packages is</p>
-<div class="admonition attention">
-<p>This command is for illustrative purposes. Don't run it.</p>
-</div>
-<div class="highlight"><pre><span></span><code>pip install pydicom
-</code></pre></div>
-
-<p>Unfortunatley, <code>pip</code> will by default attempt to install the package into a 
-system location which requires 
-<a href="https://en.wikipedia.org/wiki/Superuser">administrative</a>
-privileges. More often than not, you're not going to be able to use this 
-option.</p>
-<h2 id="pip-install-user"><code>pip install --user</code></h2>
-<p>You <em>can</em> however instruct <code>pip</code> to install packages into your home directory 
-using</p>
-<div class="highlight"><pre><span></span><code><span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="n">pydicom</span>
-</code></pre></div>
-
-<p>This will install the package under <code>~/.local</code> on Linux or <code>~/Library/Python</code> 
-on macOS. To install into a custom location, there is also the <code>--target</code> 
-option. </p>
-<div class="admonition note">
-<p class="admonition-title">Dependency conflicts</p>
-<p>You may run into issues when working on two or more projects that depend 
-on different versions of the same package. This is an important use case 
-for virtual environments. Keep reading. </p>
-</div>
-<h2 id="virtual-environments">Virtual environments</h2>
-<p>Ideally, for each software project you would have a separate Python 
-installation and within that installation you could control exactly which 
-external packages are installed. This is the purpose behind 
-<em>virtual environments</em>. </p>
-<div class="admonition attention">
-<p class="admonition-title">virtualenv</p>
-<p>Prior to Python 3.3, virtual environments were  made possible by way of an 
-external package
-<a href="https://virtualenv.pypa.io/en/latest/"><code>virtualenv</code></a>.
-Fortunately, this functionality is now 
-<a href="https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments"><u>built into Python 3</u></a>
-without the need for additional installs.</p>
-</div>
-<h3 id="create">create</h3>
+                <h1 id="virtual-environments">Virtual environments</h1>
+<p><em>Virtual environments</em> will allow you to install and try out as many different 
+Python packages as possible. </p>
+<h2 id="creating-a-virtual-environment">Creating a virtual environment</h2>
 <p>To create a virtual environment, execute the following <em>shell</em> command</p>
 <div class="highlight"><pre><span></span><code>% python -m venv <span class="nb">test</span>
 </code></pre></div>
 
-<p>This will create a directory named <code>test</code>. Congratulations 🎉 you now have a 
-virtual environment.</p>
-<div class="admonition question">
-<p class="admonition-title">Where is Python installed</p>
-<p>Before moving forward, take note of the location of the <code>python</code> executable 
-on your system. This location will change after you've activated your 
-virtual environment</p>
-<div class="highlight"><pre><span></span><code>which python
-</code></pre></div>
-
-</div>
-<h3 id="activate">activate</h3>
-<p>To activate your virtual environment, source the <code>activation</code> script</p>
+<p>This will create a directory named <code>test</code>.</p>
+<h2 id="activating-your-virtual-environment">Activating your virtual environment</h2>
+<p>To activate your virtual environment, execute the following <em>shell</em> command</p>
 <div class="highlight"><pre><span></span><code>% <span class="nb">source</span> test/bin/activate
 </code></pre></div>
 
-<p>You shoule notice the string <code>(test)</code> has been prepended to your shell prompt.
-You're now using an isolated Python installation living under the <code>test</code> 
-directory. You may also notice that <code>which python</code> now points to the <code>python</code> 
-executable under your virtual environment.</p>
+<p>You're now using an isolated/sandboxed Python installation under the <code>test</code> 
+directory. </p>
+<div class="admonition note">
+<p>You should notice that <code>which python</code> now points to the Python executable 
+that resided within your virtual environment.</p>
+</div>
 <h3 id="deactivate">deactivate</h3>
-<p>To deactivate the virtual environment, execute the <code>deactivate</code> command. 
-Deactivation will return you to the original Python installation </p>
+<p>To deactivate the virtual environment, execute the <code>deactivate</code> <em>shell</em> command</p>
 <div class="highlight"><pre><span></span><code><span class="o">(</span><span class="nb">test</span><span class="o">)</span> % deactivate
 </code></pre></div>
 
-<h3 id="installing-packages_1">installing packages</h3>
-<p>Once your virtual environment has been activated, you can proceed to install 
-any external packages. These will be conveniently installed under your virtual 
-environment directory</p>
+<div class="admonition note">
+<p>You should notice that <code>which python</code> now points to the system installed 
+Python executable. </p>
+</div>
+<h2 id="pip"><code>pip</code></h2>
+<p>The main package installer for Python is
+<a href="https://pip.pypa.io/en/stable/"><code>pip</code></a>.</p>
+<h3 id="upgrade-pip">upgrade pip</h3>
+<p>For the rest of this tutorial, you should only run <code>pip</code> from within an 
+<em>activated virtual environment</em>. Before you proceed any further, you should 
+upgrade <code>pip</code></p>
+<div class="highlight"><pre><span></span><code><span class="o">(</span><span class="nb">test</span><span class="o">)</span> % pip install --upgrade pip
+</code></pre></div>
+
+<p>Now you can install external packages such as <code>pydicom</code></p>
 <div class="highlight"><pre><span></span><code><span class="o">(</span><span class="nb">test</span><span class="o">)</span> % pip install pydicom
 </code></pre></div>
 
-<h2 id="dependency-management">Dependency management</h2>
-<p>The deeper you dive into dependency management, the more you're going to find. 
-Reading up on
-<a href="https://en.wikipedia.org/wiki/Reproducible_builds">deterministic builds</a>
-is a fun place to start.</p>
-<h3 id="dependency-graph">dependency graph</h3>
-<p>Just as you have your dependencies, you must also consider that your 
-dependencies have their own dependencies too. You might even have overlapping 
-dependencies. This is where things can get messy.</p>
-<p>If we explore the dependency graph for the 
+<h3 id="dependency-management">dependency management</h3>
+<p>You may notice that when you install an external package such as <code>pydicom</code>, 
+this triggers the installation of additional packages. This creates a 
+<em>dependency graph</em>. If we were to explore the dependency graph for the 
 <a href="https://github.com/harvard-nrg/yaxil"><code>yaxil</code></a>
-project — which is a rather small project — you'll see the following 
-dependency graph</p>
+library, you would see the following</p>
+<div class="admonition note">
+<p>The following graph was rendered with
+<a href="https://pipenv.pypa.io/en/latest/"><code>pipenv</code></a></p>
+</div>
 <div class="highlight"><pre><span></span><code>yaxil==0.4.3
   - arrow [required: Any, installed: 0.15.5]
     - python-dateutil [required: Any, installed: 2.8.1]
@@ -835,19 +709,12 @@ dependency graph</p>
   - six [required: Any, installed: 1.14.0]
 </code></pre></div>
 
-<p>You can see here that <code>yaxil</code> depends directly on <code>arrow</code>, <code>lxml</code>, <code>pydicom</code>, 
-<code>requests</code>, and <code>six</code>. That's just at the root level. Each of those 
-dependencies have their own dependencies too, sometimes with even greater 
-specificity. Looking more closely, you'll see that <code>arrow</code> depends on 
-<code>python-dateutil</code> which in turn depends on <code>six &gt;= 1.5</code>. Coincidentally, 
-<code>yaxil</code> also depends on <code>six</code>. Fortunately, it will accept any version. But 
-what if it didn't? If these two packages had conflicting requirements, there 
-would be a <em>dependency conflict</em> and you may not be alerted to this.</p>
-<h3 id="pipenv"><code>pipenv</code></h3>
-<p><a href="https://pipenv.pypa.io/en/latest/">Pipenv</a>
-is a wonderful new tool that not only allows you to document your dependencies, 
-it can also resolve your dependency graph and let you know if and where you've 
-introduced a dependency conflict.</p>
+<p>You can see that <code>yaxil</code> depends on <code>arrow</code>, <code>lxml</code>, <code>pydicom</code>, <code>requests</code>, 
+and <code>six</code> and in turn, each of those dependencies have their own dependencies.</p>
+<p>Diving deeper, you'll see that <code>arrow</code> depends on <code>python-dateutil</code> which 
+in turn depends on <code>six &gt;= 1.5</code>. Coincidentally, <code>yaxil</code> also depends on <code>six</code> 
+and will accept <code>Any</code> version. But what if it didn't? If these two packages 
+had conflicting requirements, there would be a <em>dependency conflict</em>.</p>
                 
               
               

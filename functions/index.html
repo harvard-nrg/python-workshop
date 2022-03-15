@@ -389,23 +389,37 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#calling-functions" class="md-nav__link">
-    Calling functions
+  <a href="#positional-arguments" class="md-nav__link">
+    positional arguments
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#defining-functions" class="md-nav__link">
-    Defining functions
+  <a href="#keyword-arguments" class="md-nav__link">
+    keyword arguments
   </a>
   
-    <nav class="md-nav" aria-label="Defining functions">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defining-a-function" class="md-nav__link">
+    Defining a function
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementing-a-function" class="md-nav__link">
+    Implementing a function
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementing a function">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#keyword-arguments" class="md-nav__link">
-    keyword arguments
+  <a href="#defining-keyword-arguments" class="md-nav__link">
+    defining keyword arguments
   </a>
   
 </li>
@@ -551,23 +565,37 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#calling-functions" class="md-nav__link">
-    Calling functions
+  <a href="#positional-arguments" class="md-nav__link">
+    positional arguments
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#defining-functions" class="md-nav__link">
-    Defining functions
+  <a href="#keyword-arguments" class="md-nav__link">
+    keyword arguments
   </a>
   
-    <nav class="md-nav" aria-label="Defining functions">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defining-a-function" class="md-nav__link">
+    Defining a function
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementing-a-function" class="md-nav__link">
+    Implementing a function
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementing a function">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#keyword-arguments" class="md-nav__link">
-    keyword arguments
+  <a href="#defining-keyword-arguments" class="md-nav__link">
+    defining keyword arguments
   </a>
   
 </li>
@@ -601,44 +629,59 @@
                 
                 
                 <h1 id="functions">Functions</h1>
-<h2 id="calling-functions">Calling functions</h2>
-<p>We've seen a several examples of calling functions already. The simplest 
-form takes one or more <em>positional arguments</em>. The 
-<a href="https://docs.python.org/3/library/functions.html#sorted"><code>sorted()</code></a>
-function for example can be called with only a single positional argument</p>
 <div class="admonition note">
-<p>The <code>sorted()</code> function will sort any iterable object, such as a <code>list</code>.</p>
+<p class="admonition-title">Batteries included</p>
+<p>The Python documentation includes an excellent
+<a href="https://docs.python.org/3/tutorial/stdlib.html">brief tour of the standard library</a>.</p>
 </div>
+<p>This tutorial has made use of several built-in Python functions already,
+including 
+<a href="https://docs.python.org/3/library/functions.html#type"><code>type</code></a>,
+<a href="https://docs.python.org/3/library/functions.html#func-set"><code>set</code></a>,
+<a href="https://docs.python.org/3/library/functions.html#len"><code>len</code></a>,
+and
+<a href="https://docs.python.org/3/library/functions.html#func-range"><code>range</code></a>.</p>
+<h2 id="positional-arguments">positional arguments</h2>
+<p>The simplest form of a function call takes one or more <em>positional arguments</em>. 
+For example, the
+<a href="https://docs.python.org/3/library/functions.html#sorted"><code>sorted</code></a>
+function can be called with only a single positional argument</p>
 <div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
-
 <span class="nb">sorted</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </code></pre></div>
 
-<p>However, if you look at the 
-<a href="https://docs.python.org/3/library/functions.html#sorted">function signature</a>
-for <code>sorted()</code>, you'll see that it can accept 2 additional arguments</p>
+<p>This function will return a sorted version of the input list </p>
+<div class="highlight"><pre><span></span><code><span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span> <span class="p">]</span>
+</code></pre></div>
+
+<h2 id="keyword-arguments">keyword arguments</h2>
+<p>If you read through the documentation for the
+<a href="https://docs.python.org/3/library/functions.html#sorted"><code>sorted</code></a>,
+function, you'll see that it can accept two additional <em>keyword</em> arguments</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">sorted</span><span class="p">(</span><span class="n">iterable</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </code></pre></div>
 
-<p>These arguments have default values <code>None</code> and <code>False</code>, but you can target 
-either by <em>keyword</em> to override that default. For example, you can pass 
-<code>reverse=True</code> to reverse the sort</p>
+<p>These arguments are optional since they've been defined with default values 
+<code>None</code> and <code>False</code>. You can however override either argument by referencing 
+its <em>keyword</em>. For example, you can pass <code>reverse=True</code> to reverse the sort 
+order</p>
 <div class="highlight"><pre><span></span><code><span class="nb">sorted</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 
-<h2 id="defining-functions">Defining functions</h2>
+<h2 id="defining-a-function">Defining a function</h2>
 <p>Functions are defined using the 
 <a href="https://docs.python.org/3/tutorial/controlflow.html#defining-functions"><code>def</code></a>
 keyword, followed by the name of the function, followed by a comma separated 
-list of arguments within parentheses</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+list of arguments surrounded by parentheses <code>()</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">my_function</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
 </code></pre></div>
 
-<p>This is known as the function <em>signature</em>. The function implementation should 
-exist below the signature in an indented block </p>
-<div class="admonition attention">
-<p>Be sure to insert a colon <code>:</code> after the function signature.</p>
-</div>
+<p>This is known as the
+<a href="https://docs.python.org/3/library/functions.html#sorted">function signature</a>.</p>
+<h2 id="implementing-a-function">Implementing a function</h2>
+<p>The function's implementation should exist directly below the function 
+signature within an indented block. You must also append a colon <code>:</code> to the end 
+of the function signature</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a is&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;b is&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
@@ -656,21 +699,21 @@ b is 2
 c is 3
 </code></pre></div>
 
-<h3 id="keyword-arguments">keyword arguments</h3>
+<h3 id="defining-keyword-arguments">defining keyword arguments</h3>
 <p>Positional arguments are always declared first in a function signature. These 
-arguments will be required to invoke the function. If you have any optional 
+arguments will be <em>required</em> to invoke the function. If you have any optional 
 arguments, those must be declared <em>after</em> the positional arguments using the 
-<em><code>keyword=default</code></em> syntax</p>
+<code>keyword=default</code> syntax</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">16</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a is&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;b is&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;c is&#39;</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
 </code></pre></div>
 
-<p>Given the function definition above, <code>a</code> would be required, <code>b</code> would be 
-optional (with a default value of <code>8</code>), and <code>c</code> would be optional (with 
-a default value of <code>16</code>). If you wish to specify either of these optional 
-arguments, you can target them by <em>keyword</em>. For example</p>
+<p>Given the function definition above, <code>a</code> is required, <code>b</code> is optional (with a 
+default value <code>8</code>), and <code>c</code> is optional (with a default value <code>16</code>). If you 
+wish to specify any of these optional keyword arguments, you can refer to them 
+by keyword</p>
 <div class="highlight"><pre><span></span><code><span class="n">function</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </code></pre></div>
 
@@ -681,8 +724,8 @@ c is 3
 </code></pre></div>
 
 <h2 id="returning-values">Returning values</h2>
-<p>Often, you will want your function to manipulate data <em>and</em> return a result. 
-This is achieved using a <code>return</code> statement</p>
+<p>Often times you will want your function to manipulate some input data and
+return a computed result. This is done using a <code>return</code> statement</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="n">c</span>
 </code></pre></div>

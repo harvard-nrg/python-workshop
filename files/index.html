@@ -670,46 +670,55 @@
                 
                 <h1 id="reading-and-writing-files">Reading and writing files</h1>
 <h2 id="reading-a-file">Reading a file</h2>
-<p>To read from file, simply open the file using the built-in 
+<p>To read a file, open the file using the built-in 
 <a href="https://docs.python.org/3/library/functions.html#open"><code>open()</code></a>
-function and call <code>.read()</code> on the resulting file object</p>
+function and call the
+<a href="https://docs.python.org/3/tutorial/inputoutput.html#methods-of-file-objects"><code>.read()</code></a>
+method on the resulting file object</p>
 <div class="highlight"><pre><span></span><code><span class="n">fo</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;file.txt&#39;</span><span class="p">)</span>
 
 <span class="n">content</span> <span class="o">=</span> <span class="n">fo</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 </code></pre></div>
 
-<p>To close the file, call <code>close()</code> on the file object</p>
+<p>To close the file, call the <code>.close()</code> method</p>
 <div class="highlight"><pre><span></span><code><span class="n">fo</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </code></pre></div>
 
 <h3 id="character-encoding">character encoding</h3>
-<p>The result from calling <code>fo.read()</code> can sometimes yield a byte-string. Python 
-will not automatically decode strings for you. To decode the result, you must 
-know the character encoding and call the <code>.decode()</code> method. If the string is 
-in <code>utf-8</code> for example, you would call</p>
-<div class="highlight"><pre><span></span><code><span class="n">content</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+<p>Calling <code>open()</code> on a file without any additional arguments will assume the 
+file being opened is a text file containing a UTF-8 encoded string. If you 
+know that is not the case, you need to open the file in <em>read binary mode</em> 
+by passing <code>rb</code> as the second argument</p>
+<div class="highlight"><pre><span></span><code><span class="n">fo</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Calling the <code>.read()</code> method on the resulting file object will now yield a 
+byte-string. To decode this byte-string, you must call <code>.decode()</code> with the 
+correct character encoding as the first argument</p>
+<div class="highlight"><pre><span></span><code><span class="n">content</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">)</span>
 </code></pre></div>
 
 <div class="admonition tip">
-<p>UTF-8 is common but by no means the only character encoding.</p>
+<p>UTF-8 is quite common and backwards compatible with ASCII, but is 
+certainly not the only character encoding.</p>
 </div>
 <h2 id="writing-a-file">Writing a file</h2>
-<p>The process for writing a file is similar to reading. Again, you need to 
-open the file using the built-in <code>open()</code> function, but this time you must 
-open the file in write mode using <code>w</code> as the second positional argument</p>
+<p>The process for writing a file is similar to reading. Simply open the file 
+using the built-in <code>open()</code> function, however you need to open the file in 
+<em>write mode</em> by passing <code>w</code> as the second argument</p>
 <div class="highlight"><pre><span></span><code><span class="n">fo</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
 
 <span class="n">fo</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Hello, World!</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 </code></pre></div>
 
-<p>It's more important to call <code>.close()</code> after writing to a file to ensure that 
+<p>It's more important to call <code>.close()</code> after writing a file to ensure that 
 the write buffer has been flushed to disk</p>
 <div class="highlight"><pre><span></span><code><span class="n">fo</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </code></pre></div>
 
 <h2 id="appending-to-a-file">Appending to a file</h2>
-<p>Similar to writing, appending content to an existing file requires opening the 
-file in append mode using <code>a</code> as the second positional argument</p>
+<p>Appending content to an existing file requires opening the file in 
+<em>append mode</em> by passing <code>a</code> as the second argument</p>
 <div class="highlight"><pre><span></span><code><span class="n">fo</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span>
 
 <span class="n">fo</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">another</span> <span class="n">line</span><span class="s1">&#39;)</span>
@@ -718,24 +727,23 @@ file in append mode using <code>a</code> as the second positional argument</p>
 </code></pre></div>
 
 <h2 id="file-context-manager">File context manager</h2>
-<p>Forgetting to call <code>close()</code> is a common mistake. Fortunately, the file 
+<p>Forgetting to call <code>.close()</code> is a common mistake. Fortunately, the file 
 object returned by <code>open()</code> supports the 
 <a href="https://docs.python.org/3/reference/datamodel.html#context-managers">context manager</a>
-interface. To use a context manager, you must wrap the function call in a 
+interface. To use a context manager, you wrap the function call in a 
 <a href="https://docs.python.org/3/reference/compound_stmts.html#the-with-statement"><code>with</code> statement</a></p>
 <div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fo</span><span class="p">:</span>
     <span class="n">fo</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Hello, World!</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 </code></pre></div>
 
-<p>The primary benefit is that as soon as you dedent the <code>with</code> block, the file 
-will be closed.</p>
+<p>The benefit is that as soon as you dedent the <code>with</code> block, the file will be 
+closed.</p>
 <h2 id="csv-files">CSV files</h2>
-<p>Since reading 
-<a href="https://en.wikipedia.org/wiki/Comma-separated_values">CSV</a>
-files is so common, we'll take some time to explore the 
+<p>We'll take a moment to explore the
 <a href="https://docs.python.org/3/library/csv.html"><code>csv</code></a>
-module.</p>
-<p>To begin using the <code>csv</code> module, import it </p>
+module for reading a
+<a href="https://en.wikipedia.org/wiki/Comma-separated_values">CSV</a>
+file. To begin using the <code>csv</code> module, import it </p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">csv</span>
 </code></pre></div>
 
@@ -769,22 +777,9 @@ is parsed and returned as a <code>list</code></p>
 </code></pre></div>
 
 <h3 id="dictionary-reader">Dictionary reader</h3>
-<p>The first row of a CSV file usually contains column headers. It's fairly common 
+<p>The first row of a CSV file usually contains column headers. It's useful to 
 to combine each row with the column headers so that you can retrive items using 
-<code>dict</code> indexing. Here's the long form version of this</p>
-<div class="admonition attention">
-<p>The example below is for illustrative purposes. There's a better way.</p>
-</div>
-<div class="highlight"><pre><span></span><code><span class="n">fo</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;file.csv&#39;</span><span class="p">)</span>
-<span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">fo</span><span class="p">)</span>
-<span class="n">headers</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">reader</span><span class="p">)</span>              <span class="c1"># get the first row</span>
-<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>                  <span class="c1"># iterate over the remaining rows </span>
-    <span class="n">row</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">headers</span><span class="p">,</span> <span class="n">row</span><span class="p">))</span>   <span class="c1"># combine headers and values</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Metric 1&#39;</span><span class="p">])</span>
-</code></pre></div>
-
-<p>You shouldn't bother with all of that. This is so common that the <code>csv</code> module 
-includes a <code>csv.DictReader</code> to do it for you</p>
+dictionary-based indexing. The <code>csv.DictReader</code> can do this for you</p>
 <div class="highlight"><pre><span></span><code><span class="n">fo</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;file.csv&#39;</span><span class="p">)</span>
 <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">fo</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>

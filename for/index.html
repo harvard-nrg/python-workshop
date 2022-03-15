@@ -585,10 +585,10 @@ general format of a <code>for</code> loop is as follows</p>
 </code></pre></div>
 
 <h2 id="iteration">Iteration</h2>
-<p>Many of the data structures that we've encountered are 
-<a href="https://docs.python.org/3/glossary.html#term-iterable">iterable</a>.
-Suppose we have a <code>list</code> of scan information. Each item in the <code>list</code> is a 
-<code>dict</code> containing various scan properties</p>
+<p>Many of the data structures we've reviewed are
+<a href="https://docs.python.org/3/glossary.html#term-iterable">iterable</a>
+in Python. Suppose we have a <code>list</code> of scan information where each item in the 
+<code>list</code> contains a <code>dict</code> of various scan properties</p>
 <div class="highlight"><pre><span></span><code><span class="n">scans</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">{</span>
         <span class="s1">&#39;num&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
@@ -610,8 +610,8 @@ Suppose we have a <code>list</code> of scan information. Each item in the <code>
 </code></pre></div>
 
 <p>If you want to retrieve the scan numbers for all <code>BOLD</code> scans, you could use a 
-<code>for</code> loop to iterate over the <code>scans</code> list and call the same block of code to 
-populate a <code>numbers</code> list</p>
+<code>for</code> loop to iterate over these <code>scans</code> and call the same block of code to 
+populate a scan <code>numbers</code> list</p>
 <div class="highlight"><pre><span></span><code><span class="n">numbers</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="k">for</span> <span class="n">scan</span> <span class="ow">in</span> <span class="n">scans</span><span class="p">:</span>
@@ -621,8 +621,9 @@ populate a <code>numbers</code> list</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
 </code></pre></div>
 
+<p>This should print the result <code>[3, 4]</code>.</p>
 <h2 id="iterating-over-a-dict">Iterating over a <code>dict</code></h2>
-<p>It's also possible to iterate over a <code>dict</code>, but there are some slight 
+<p>It's also possible to iterate over a <code>dict</code>, but there are some subtle
 differences. By default, when you iterate over a <code>dict</code> you'll only receive 
 its keys. For example</p>
 <div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">{</span>
@@ -638,12 +639,14 @@ its keys. For example</p>
 
 <p>If you want to iterate over the <code>dict</code> returning <code>key</code> and <code>value</code> pairs, you 
 can use the following syntax</p>
-<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">a</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">a</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;key =&#39;</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="s1">&#39;value =&#39;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 </code></pre></div>
 
-<p>Note that the above <code>for</code> loop is using
-<a href="/tuple/#unpacking">tuple unpacking</a>.</p>
+<p>The <code>.items()</code> method on a dictionary will return all key/value pairs as a 
+list of tuples. The <code>for</code> loop shown above is
+<a href="/tuple/#unpacking">unpacking</a>
+each tuple into the separate variables <code>key</code> and <code>value</code>.</p>
                 
               
               
