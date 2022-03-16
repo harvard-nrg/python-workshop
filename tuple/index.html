@@ -592,11 +592,14 @@
                 
                 <h1 id="data-structures">Data Structures</h1>
 <h2 id="tuples">Tuples</h2>
-<p>Tuples are essentially
+<p>Tuples are effectively an
 <a href="https://en.wikipedia.org/wiki/Immutable_object">immutable</a>
-lists. You cannot add, update, or delete items from an existing tuple.</p>
-<p>A tuple begins and ends with parentheses <code>()</code> and items are separated by 
-a comma <code>,</code>. Spaces don't matter</p>
+list. Once a tuple has been defined, you cannot add, update, or delete items 
+from it. A tuple begins and ends with parentheses <code>()</code> and items are separated 
+by a comma <code>,</code></p>
+<div class="admonition note">
+<p>Spaces don't matter here.</p>
+</div>
 <div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">)</span>
 </code></pre></div>
 
@@ -618,13 +621,14 @@ loops, you can <em>unpack</em> a tuple into individual variables</p>
 <div class="highlight"><pre><span></span><code><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span> <span class="p">)</span>
 </code></pre></div>
 
-<p>In this case <code>a = 1</code>, <code>b = 2</code>, and <code>c = 3</code>.</p>
+<p>In this case <code>a = 1</code>, <code>b = 2</code>, and <code>c = 3</code>. Remember this pattern as it often 
+appears in code and documentation.</p>
 <h2 id="immutability">Immutability</h2>
-<p>The immutability property of a tuple can be desirable in some 
+<p>The immutability property of a tuple is desirable under some 
 circumstances. For example, only immutable types in Python can be 
 <a href="https://en.wikipedia.org/wiki/Hash_function">hashed</a>
-and only hashable types can be used as dictionary keys. Therefore, you 
-can do this</p>
+and only hashable types can be used as dictionary keys. For example,
+this is perfectly legal code</p>
 <div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">{</span>
     <span class="p">(</span> <span class="s1">&#39;StudyA&#39;</span><span class="p">,</span> <span class="s1">&#39;Subject1&#39;</span> <span class="p">):</span> <span class="p">[</span> <span class="s1">&#39;Session1&#39;</span><span class="p">,</span> <span class="s1">&#39;Session2&#39;</span> <span class="p">],</span>
     <span class="p">(</span> <span class="s1">&#39;StudyA&#39;</span><span class="p">,</span> <span class="s1">&#39;Subject2&#39;</span> <span class="p">):</span> <span class="p">[</span> <span class="s1">&#39;Session3&#39;</span><span class="p">,</span> <span class="s1">&#39;Session4&#39;</span> <span class="p">],</span>
@@ -632,8 +636,11 @@ can do this</p>
 <span class="p">}</span>
 </code></pre></div>
 
-<p>and subsequently retrieve an item from this dictionary using 
-<code>( 'StudyA', 'Subject2' )</code></p>
+<div class="admonition note">
+<p>Note that you cannot hash a tuple if it contains a mutable type.</p>
+</div>
+<p>and subsequently you can retrieve an item from this dictionary using 
+<code>('StudyA','Subject2')</code></p>
 <div class="highlight"><pre><span></span><code><span class="n">a</span><span class="p">[(</span> <span class="s1">&#39;StudyA&#39;</span><span class="p">,</span> <span class="s1">&#39;Subject2&#39;</span> <span class="p">)]</span>
 </code></pre></div>
                 

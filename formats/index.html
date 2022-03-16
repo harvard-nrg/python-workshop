@@ -490,6 +490,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#visualizing-pixel-data" class="md-nav__link">
+    visualizing pixel data
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -526,6 +533,13 @@
           <li class="md-nav__item">
   <a href="#reading-pixel-data_1" class="md-nav__link">
     reading pixel data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visualizing-pixel-data_1" class="md-nav__link">
+    visualizing pixel data
   </a>
   
 </li>
@@ -626,6 +640,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#visualizing-pixel-data" class="md-nav__link">
+    visualizing pixel data
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -662,6 +683,13 @@
           <li class="md-nav__item">
   <a href="#reading-pixel-data_1" class="md-nav__link">
     reading pixel data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visualizing-pixel-data_1" class="md-nav__link">
+    visualizing pixel data
   </a>
   
 </li>
@@ -805,6 +833,23 @@ property</p>
 <div class="highlight"><pre><span></span><code><span class="n">pixels</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">pixel_array</span>
 </code></pre></div>
 
+<h4 id="visualizing-pixel-data">visualizing pixel data</h4>
+<p>Let's take a look at
+<a href="https://matplotlib.org/">matplotlib</a>
+to visualize DICOM pixel data. First, you need to install <code>matplotlib</code></p>
+<div class="highlight"><pre><span></span><code>pip install matplotlib
+</code></pre></div>
+
+<p>Now, import <code>matplotlib.pyplot</code> and use
+<a href="https://matplotlib.org/3.5.1/api/_as_gen/matplotlib.pyplot.imshow.html"><code>imshow()</code></a>
+to render the pixel data (a NumPy <code>ndarray</code>) as an image</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">pixel_array</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+
 <h2 id="nifti">NIfTI</h2>
 <p>For reading and writing NIFTI files, use the 
 <a href="https://nipy.org/nibabel/"><code>nibabel</code></a>
@@ -840,6 +885,24 @@ loop to iterate over all the headers</p>
 images efficiently. For more details, read the official documentation
 <a href="https://nipy.org/nibabel/images_and_memory.html#use-the-array-proxy-instead-of-get-fdata">here</a>.</p>
 </div>
+<h4 id="visualizing-pixel-data_1">visualizing pixel data</h4>
+<p>Let's take a look at
+<a href="https://matplotlib.org/">matplotlib</a>
+to visualize NIfTI pixel data. First, you need to install <code>matplotlib</code></p>
+<div class="highlight"><pre><span></span><code>pip install matplotlib
+</code></pre></div>
+
+<p>Now, import <code>matplotlib.pyplot</code> and use
+<a href="https://matplotlib.org/3.5.1/api/_as_gen/matplotlib.pyplot.imshow.html"><code>imshow()</code></a>
+to render image <code>50</code> along the z-axis</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">fdata</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">get_fdata</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">fdata</span><span class="p">[:,:,</span><span class="mi">50</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
                 
               
               

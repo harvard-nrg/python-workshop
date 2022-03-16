@@ -606,34 +606,36 @@
                 
                 <h1 id="data-structures">Data Structures</h1>
 <h2 id="sets">Sets</h2>
-<p>Sets allow you to accumulate items without duplicates. A set begins and 
-ends with curly braces <code>{}</code> and each item is separated by a comma. Spaces 
-don't matter</p>
+<p>Sets allow you to accumulate items without duplicates. A set begins and ends 
+with curly braces <code>{}</code> and each item is separated by a comma <code>,</code></p>
+<div class="admonition note">
+<p>Spaces don't matter here.</p>
+</div>
 <div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span> <span class="p">}</span>
 </code></pre></div>
 
-<p>Even though we've added multiple instances of <code>1</code> and <code>2</code>, if you inspect the 
-contents of this set you'll see that it contains only a single instance of <code>1</code> 
-and <code>2</code>.</p>
+<p>Note that even though we've added multiple instances of <code>1</code> and <code>2</code>, the set 
+object only contains a single instance of <code>1</code> and <code>2</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span>
 </code></pre></div>
 
 <h2 id="alternate-syntax">Alternate syntax</h2>
-<p>Python unfortnately uses curly braces <code>{}</code> to define both sets <em>and</em> 
-dictionaries. As a result, the following will create an empty dictionary, not 
-a set</p>
+<p>Unfortunately, Python also uses curly braces <code>{}</code> to define sets <em>and</em> 
+dictionaries. The following will create an empty dictionary</p>
 <div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">{}</span>
 </code></pre></div>
 
-<p>To create an empty set, you must use the <code>set()</code> function without any arguments</p>
+<p>To create an empty set, you need to use the 
+<a href="https://docs.python.org/3/library/functions.html#func-set"><code>set()</code></a>
+function without any arguments</p>
 <div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
 </code></pre></div>
 
 <h2 id="set-operations">Set operations</h2>
-<p>The set data type supports conventional set operations. For example, you can 
-find the <code>union</code>, <code>intersection</code>, and <code>difference</code> between two sets using the 
-following methods</p>
+<p>The set data type supports many conventional set operations. You can find the 
+<code>union</code>, <code>intersection</code>, and <code>difference</code> between two sets using the following 
+methods</p>
 <div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span> <span class="p">}</span>
 <span class="n">b</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span> <span class="p">}</span>
 <span class="n">a</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>       <span class="c1"># intersection</span>
@@ -649,7 +651,7 @@ methods</p>
 </code></pre></div>
 
 <h2 id="indexing">Indexing</h2>
-<p>Sets, which are inherently unordered collections of items, do not support indexing.</p>
+<p>Sets, which are inherently unordered collections, do not support indexing.</p>
                 
               
               

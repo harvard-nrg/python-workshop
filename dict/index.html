@@ -606,15 +606,15 @@
                 
                 <h1 id="data-structures">Data Structures</h1>
 <h2 id="dictionaries">Dictionaries</h2>
-<p>Dictionaries are data structures that allow you to define custom indexes or 
+<p>Dictionaries are data structures that allow you to define custom indexes or
 <em>keys</em>.</p>
 <div class="admonition note">
 <p>In other languages, dictionaries are referred to as <em>hash maps</em>, <em>hash 
-tables</em> or <em>associative arrays</em>.</p>
+tables</em>, or <em>associative arrays</em>.</p>
 </div>
 <p>Dictionaries begin and end with curly braces <code>{}</code> and each key/value pair 
-(item) is separated by a comma <code>,</code> . You define your own keys and their 
-corresponding values separated by a colon <code>:</code></p>
+is separated by a comma <code>,</code>. You define keys and their corresponding 
+values separated by a colon <code>:</code></p>
 <div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Guido van Rossum&#39;</span><span class="p">,</span>
   <span class="s1">&#39;yob&#39;</span><span class="p">:</span> <span class="mi">1956</span>
@@ -622,25 +622,24 @@ corresponding values separated by a colon <code>:</code></p>
 </code></pre></div>
 
 <h2 id="indexing">Indexing</h2>
-<p>You can index into a dictionary using the keys that <em>you</em> defined </p>
+<p>You can index into a dictionary using the defined keys, which is often easier 
+and more robust than having to remember numeric indexes </p>
 <div class="highlight"><pre><span></span><code><span class="n">a</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
 <span class="n">a</span><span class="p">[</span><span class="s1">&#39;yob&#39;</span><span class="p">]</span>
 </code></pre></div>
 
-<p>This is often easier and more robust than having to remember numeric indexes.</p>
 <h2 id="insert">Insert</h2>
-<p>You can insert new items into an existing dictionary using the assignment <code>=</code>
-operator</p>
+<p>Use the assignment operator <code>=</code> to insert new items into an existing dictionary </p>
 <div class="highlight"><pre><span></span><code><span class="n">a</span><span class="p">[</span><span class="s1">&#39;job title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;BDFL&#39;</span>
 </code></pre></div>
 
 <h2 id="update">Update</h2>
-<p>You can update an existing dictionary item using the assignment <code>=</code> operator</p>
+<p>Use the assignment operator <code>=</code> to update dictionary items</p>
 <div class="highlight"><pre><span></span><code><span class="n">a</span><span class="p">[</span><span class="s1">&#39;job title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 </code></pre></div>
 
 <h2 id="delete">Delete</h2>
-<p>You can delete an item from a dictionary using the <code>del</code> keyword</p>
+<p>Use the <code>del</code> keyword to delete items from a dictionary</p>
 <div class="highlight"><pre><span></span><code><span class="k">del</span> <span class="n">a</span><span class="p">[</span><span class="s1">&#39;job title&#39;</span><span class="p">]</span>
 </code></pre></div>
                 

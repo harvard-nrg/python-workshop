@@ -592,8 +592,8 @@
                 
                 <h1 id="control-flow">Control flow</h1>
 <h2 id="comparison-operators">Comparison operators</h2>
-<p>Python provides fairly conventional <em>relational operators</em> to compare two 
-values and return a boolean result</p>
+<p>Python provides all of the conventional <em>relational operators</em> to compare two 
+values</p>
 <table>
 <thead>
 <tr>
@@ -628,7 +628,7 @@ values and return a boolean result</p>
 </tr>
 </tbody>
 </table>
-<p>Some examples include</p>
+<p>Examples include</p>
 <div class="highlight"><pre><span></span><code><span class="mi">1</span> <span class="o">&lt;</span> <span class="mi">2</span>
 <span class="mi">2</span> <span class="o">&gt;</span> <span class="mi">1</span>
 <span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span>
@@ -637,9 +637,10 @@ values and return a boolean result</p>
 <span class="mi">3</span> <span class="o">&gt;=</span> <span class="mi">2</span>
 </code></pre></div>
 
+<p>These will return a <code>bool</code> result.</p>
 <h2 id="boolean-operators">Boolean operators</h2>
-<p>Also referred to as <em>logical operators</em>, boolean operators are often used to 
-create conjunctions</p>
+<p>Also referred to as <em>logical operators</em>, boolean operators are used to create 
+<em>conjunctions</em></p>
 <table>
 <thead>
 <tr>
@@ -672,6 +673,7 @@ create conjunctions</p>
 <span class="kc">True</span> <span class="ow">and</span> <span class="ow">not</span> <span class="kc">False</span>
 </code></pre></div>
 
+<p>These will return a <code>bool</code> result.</p>
 <h2 id="truthiness-of-values">Truthiness of values</h2>
 <p>Python will interpret empty values as <code>False</code> and non-empty values as <code>True</code>. 
 For example, it's common to execute a block of code if a <code>list</code> is empty. One 
@@ -682,7 +684,7 @@ way to do this would be</p>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;the list is empty&#39;</span><span class="p">)</span>
 </code></pre></div>
 
-<p>but since Python will interpret an empty list as <code>False</code>, you can do the 
+<p>However, since Python will interpret an empty list as <code>False</code> you can do the 
 following instead</p>
 <div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="ow">not</span> <span class="n">a</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;the list is empty&#39;</span><span class="p">)</span>

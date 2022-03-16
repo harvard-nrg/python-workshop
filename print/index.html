@@ -615,16 +615,17 @@
                 
                 
                 <h1 id="print-and-string-formatting">Print and string formatting</h1>
-<p>One of the most tried and true debugging tools you will ever encounter is
+<p>One of the most tried and true debugging tools is
 <a href="https://docs.python.org/3/library/functions.html#print"><code>print</code></a>.</p>
 <div class="admonition attention">
-<p class="admonition-title">Logging is your friend</p>
 <p>Make liberal use of <code>print</code> to output text from your programs that 
 would be useful for troubleshooting and monitoring progress.</p>
 </div>
 <h2 id="simple-use-case">Simple use case</h2>
-<p>You can pass any value to <code>print</code> that can be represented as a <code>str</code>, which 
-happens to be most values in Python</p>
+<p>You can pass any value to <code>print</code> that can be represented as a string</p>
+<div class="admonition note">
+<p>Most types of data in Python can be represented as a string.</p>
+</div>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello, World!&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="mf">3.14</span><span class="p">)</span>
@@ -634,29 +635,28 @@ happens to be most values in Python</p>
 </code></pre></div>
 
 <h2 id="string-formatting">String formatting</h2>
-<p>Format strings allow you to create more complex strings that contain plain text 
-and values from existing variables.</p>
+<p><em>Format strings</em> allow you to create more complex strings containing plain text 
+and existing variables.</p>
 <div class="admonition tip">
 <p class="admonition-title">Read the documentation</p>
-<p>String formatting is nothing short of a
+<p>String formatting is a whole
 <a href="https://docs.python.org/3.4/library/string.html#format-specification-mini-language">mini-language</a> 
-within the Python language itself. I'll suggest that you refer to the 
-official documentation 
-<a href="https://docs.python.org/3.4/library/string.html#format-string-syntax">here</a>. </p>
+within the Python language itself. I suggest referring to the 
+<a href="https://docs.python.org/3.4/library/string.html#format-string-syntax">official documentation</a> 
+for more.</p>
 </div>
 <h3 id="basic-example">Basic example</h3>
-<p>You define a format string like a regular string, except you must prefix the 
-string with a single <code>f</code> character. Within the format string, you can use 
-curly brace <code>{}</code> notation to refer to an existing variable</p>
+<p>You define a format string like a any other string, except you must prefix the 
+string with a <code>f</code>. Within the format string, you can use curly braces <code>{}</code> 
+to reference a variable</p>
 <div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;World&#39;</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Hello, </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1">!&#39;</span><span class="p">)</span>
 </code></pre></div>
 
-<p>In the example above, Python will substitute the placeholder <code>{a}</code> with the 
-value from the variable <code>a</code> resulting in the printed string <code>Hello, World!</code>.</p>
+<p>In this example, Python will substitute the placeholder <code>{a}</code> with the value 
+from the variable <code>a</code> which will result in the string <code>Hello, World!</code>.</p>
 <h3 id="real-world-example">Real world example</h3>
-<p>Format strings can be used to dynamically build shell commands that you want 
-to execute. For example</p>
+<p>Format strings are sometimes used to dynamically build shell commands. For example</p>
 <div class="highlight"><pre><span></span><code><span class="n">files</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">[</span><span class="s1">&#39;subject_a.dcm&#39;</span><span class="p">,</span> <span class="s1">&#39;subject_a.nii.gz&#39;</span><span class="p">],</span>
     <span class="p">[</span><span class="s1">&#39;subject_b.dcm&#39;</span><span class="p">,</span> <span class="s1">&#39;subject_b.nii.gz&#39;</span><span class="p">],</span>
@@ -668,25 +668,23 @@ to execute. For example</p>
     <span class="nb">print</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
 </code></pre></div>
 
-<p>This will print the following 3 shell commands </p>
+<p>This will print the following shell commands </p>
 <div class="highlight"><pre><span></span><code>mri_convert subject_a.dcm subject_a.nii.gz
 mri_convert subject_b.dcm subject_b.nii.gz
 mri_convert subject_c.dcm subject_c.nii.gz
 </code></pre></div>
 
 <h3 id="rounding-floats">Rounding <code>floats</code></h3>
-<p>It's common for developers to specify how a <code>float</code> value should be handled by 
-a formatted string. To do this, you can add a format specifier to your 
-placeholder using the <code>{variable:specifier}</code> syntax. </p>
-<p>For example, if you want your format string to round a variable <code>pi</code> to 4 
-decimal places, you would append <code>0.4f</code> to <code>pi</code>. Both components should be 
-separated by a colon <code>:</code></p>
+<p>It's common for a developer to specify how a <code>float</code> value should be displayed 
+within a formatted string. To do this, you can add a format specifier to your 
+placeholder using <code>{variable:specifier}</code> syntax.</p>
+<p>For example, if you want your format string to round the variable <code>pi</code> to 4 
+decimal places, you would append <code>0.4f</code> to <code>pi</code></p>
 <div class="highlight"><pre><span></span><code><span class="n">pi</span> <span class="o">=</span> <span class="mf">3.1415926</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;π rounded to 4 decimal places is </span><span class="si">{</span><span class="n">pi</span><span class="si">:</span><span class="s1">0.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </code></pre></div>
 
-<p>For more information about format specifiers, please refer to the official 
-documentation 
+<p>For more information on format specifiers, refer to the official documentation 
 <a href="https://docs.python.org/3.4/library/string.html#format-specification-mini-language">here</a>.</p>
                 
               
