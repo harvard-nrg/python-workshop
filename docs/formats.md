@@ -9,7 +9,7 @@ and
 !!! tip "Use a virtual environment"
     To have full control over installing the packages described in this 
     section, follow the
-    [virtual environment tutorial](/virtualenv).
+    [virtual environment tutorial](/python-workshop/virtualenv).
 
 ## DICOM
 
