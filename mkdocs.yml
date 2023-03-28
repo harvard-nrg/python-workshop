@@ -26,7 +26,8 @@ nav:
   - 'Subprocesses': subprocess.md
   - 'Writing command line tools': cli.md
   - 'Reading and writing files': files.md
-  - 'Virtual environments': virtualenv.md 
+  - 'Virtual environments': virtualenv.md
   - 'DICOM and NIFTI': formats.md
   - 'Machine learning primer': learn.md
   - 'Recommendations': recommendations.md
+  - 'Nipype': nipype.md
