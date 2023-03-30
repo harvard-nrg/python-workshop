@@ -25,6 +25,9 @@ python -c "import nipype; nipype.test()"
 # You will probably get warnings, but make sure you don't have any errors or fails.
 ```
 
+!!! note ""
+    To access the [_full code of nipype_spm1stlevel.py (**LINK**)_](https://github.com/harvard-nrg/python-workshop/blob/main/docs/code/nipype_spm1stlevel.py)
+
 ## Interface, Node, Workflow
 A nipype pipeline is composed of 3 differently "sized" objects, from smallest to largest:
 1. Interfaces,
@@ -38,7 +41,7 @@ A nipype pipeline is composed of 3 differently "sized" objects, from smallest to
 
 [_Interfaces_](https://nipype.readthedocs.io/en/latest/interfaces.html) are Python functions that wrap the magical (mostly neuroimaging) tools from other software packages (e.g., fslmaths from FSL or recon-all from Freesurfer)
 
-Like modules, interfaces aren't Python built-ins, so their modules must be imported at the beginning of your Python script (lines 1-13 of *nipype_spm1stlevel.py*):
+Like modules, interfaces aren't Python built-ins, so their modules must be imported at the beginning of your Python script (lines 1-13 of [_nipype_spm1stlevel.py **LINK**_](https://github.com/harvard-nrg/python-workshop/blob/main/docs/code/nipype_spm1stlevel.py)):
 ```python
 from nipype.interfaces import fsl, spm
 ```
@@ -168,10 +171,17 @@ l1analysis.connect([(contrastestimate, datasink,[('con_images', 'contrasts.@con'
 
 ![Directory of nipype output](./assets/datasink_output.png)
 
+#### Another output: Workflow graph ####
+
+One other nice feature of Nipype is that it automatically gives you a nice figure showing the connected graph of your nodes. It will be in the main output directory, called *graph.png*
+
+For example:
+![Pipeline graph](./assets/graph.png)
+
 ## Running your nipype script (and accessing software packages)
 Nipype is providing functions which Python-ize *access* to tools that may be written in another language, but not the tools themselves. You still need to `module load` (if on FASSE) or install the software packages.
 
-The tricky thing is that we can't load the modules in any permanent way from **within** Python. If you're on FASSE, I suggest having a separate (batch?) script that loads the necessary modules and then calls the Python script.
+The tricky thing is that we can't load the modules in any permanent way from *within* Python. If you're on FASSE, I suggest having a **separate script** that loads the necessary modules and then calls the Python script. ([_Example script: run_spm1stlevel.sh **LINK**_](https://github.com/harvard-nrg/python-workshop/blob/main/docs/code/run_spm1stlevel.sh))
 
 ```bash
 #!/bin/bash
