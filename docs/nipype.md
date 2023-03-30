@@ -86,7 +86,7 @@ convert.inputs.out_type = 'nii'
 #### Iterfield
 The `iterfield` entry is not limited to files or to MapNodes. You could use it for any input. For instance, if you're doing smoothing and want to try a bunch of different kernels, this input parameter could go in the iterfield. Or if you're doing a second level analysis over many contrasts, this could also go in the iterfield.
 
-![Figure of Node with an iterfield](./assets/IterField1.png)
+![Figure of Node with an iterfield](./assets/Iterfield1.png)
 
 A hypothetical example:
 ```python
