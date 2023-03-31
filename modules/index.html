@@ -820,9 +820,8 @@ modules.</p>
 <h2 id="the-os-module">The <code>os</code> module</h2>
 <p>The 
 <a href="https://docs.python.org/3/library/os.html"><code>os</code></a>
-module provides functions that allow you to interact with the 
-operating system. To begin using functions from the <code>os</code> module, you need to 
-import it</p>
+module provides functions that allow you to interact with the operating 
+system. To begin using functions from <code>os</code>, you first need to import it</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
 </code></pre></div>
 <h3 id="joining-paths">Joining paths</h3>
@@ -840,9 +839,8 @@ will list directory contents, similar to the <code>ls</code> utility from
     <span class="nb">print</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="walking-a-directory">Walking a directory</h3>
-<p>If you want to crawl over a directory and each subdirectory from the command 
-line, you would likely run a command like <code>ls -R</code> or <code>find</code>. In Python, you 
-could use
+<p>If you want to crawl over a directory and every subdirectory from the command 
+line, you would run a command like <code>ls -R</code> or <code>find</code>. In Python, you can use
 <a href="https://docs.python.org/3/library/os.html#os.walk"><code>os.walk</code></a></p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
@@ -917,14 +915,14 @@ This function accepts the <em>source</em> and <em>destination</em> directories</
 </code></pre></div>
 <h3 id="deleting-a-directory">Deleting a directory</h3>
 <p>To delete an entire directory from the command line, you would typically use 
-<code>rm -r</code> and say a quick prayer. In Python, you would use 
+<code>rm -r</code> and say a prayer. In Python, you would use 
 <a href="https://docs.python.org/3/library/shutil.html#shutil.rmtree"><code>shutil.rmtree</code></a>.
 This function accepts the directory to delete</p>
 <div class="admonition danger">
 <p class="admonition-title">Destructive command</p>
 <p>You will not be asked for confirmation. Use at your own risk.</p>
 </div>
-<div class="highlight"><pre><span></span><code><span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="s1">&#39;/please/be/careful&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="s1">&#39;/be/careful&#39;</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="from-x-import-y"><code>from x import y</code></h2>
 <p>Instead of importing a module and calling a function</p>

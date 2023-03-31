@@ -760,7 +760,7 @@ and
 <p>The simplest form of a function call takes one or more <em>positional arguments</em>. 
 For example, the
 <a href="https://docs.python.org/3/library/functions.html#sorted"><code>sorted()</code></a>
-function can be called with only a single positional argument</p>
+function can be called with a single positional argument</p>
 <div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 
 <span class="nb">sorted</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
@@ -769,13 +769,12 @@ function can be called with only a single positional argument</p>
 <h2 id="keyword-arguments">keyword arguments</h2>
 <p>If you read through the documentation for the
 <a href="https://docs.python.org/3/library/functions.html#sorted"><code>sorted()</code></a>
-function, you'll see that it can accept two more <em>keyword</em> arguments</p>
+function, you'll see that it can accept additional <em>keyword</em> arguments</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">sorted</span><span class="p">(</span><span class="n">iterable</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </code></pre></div>
 <p>These arguments are optional since they've been defined with the default values 
-<code>None</code> and <code>False</code>. You can however override either of these arguments by 
-referencing it by <em>keyword</em>. For example, you can pass <code>reverse=True</code> to 
-reverse the sort order</p>
+<code>None</code> and <code>False</code>. You can override these defaults by referencing the argument
+by <em>keyword</em>. For example, you can pass <code>reverse=True</code> to reverse the sort order</p>
 <div class="highlight"><pre><span></span><code><span class="nb">sorted</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="defining-a-function">Defining a function</h2>
@@ -789,8 +788,8 @@ list of arguments within parentheses <code>()</code></p>
 <a href="https://docs.python.org/3/library/functions.html#sorted">function signature</a>.</p>
 <h2 id="implementing-a-function">Implementing a function</h2>
 <p>The function's implementation should exist within an indented block directly 
-below the function signature. You must append a colon <code>:</code> to the end of the 
-function signature</p>
+below the function signature. You must also append a colon <code>:</code> to the end of 
+the function signature</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a is&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;b is&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
@@ -800,16 +799,16 @@ function signature</p>
 libary</p>
 <div class="highlight"><pre><span></span><code><span class="n">function</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 </code></pre></div>
-<p>This will print the following text to the console</p>
+<p>This will print the following to the console</p>
 <div class="highlight"><pre><span></span><code>a is 1
 b is 2
 c is 3
 </code></pre></div>
 <h3 id="defining-keyword-arguments">defining keyword arguments</h3>
 <p>Positional arguments are always declared first in a function signature. These 
-arguments will be <em>required</em> to invoke the function. If you'd like to define 
-any <em>optional</em> arguments, those must be declared <em>after</em> the positional 
-arguments using the <code>keyword=default</code> syntax</p>
+arguments are <em>required</em> to invoke the function. If you'd like to define any 
+<em>optional</em> arguments, those must be declared <em>after</em> the positional arguments 
+using the <code>keyword=default</code> syntax</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">16</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a is&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;b is&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
@@ -821,14 +820,14 @@ calling this function, if you wish to override any of these optional keyword
 arguments, you can refer to them by keyword</p>
 <div class="highlight"><pre><span></span><code><span class="n">function</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </code></pre></div>
-<p>This would print the following text to the console</p>
+<p>This will print the following text to the console</p>
 <div class="highlight"><pre><span></span><code>a is 1
 b is 8
 c is 3
 </code></pre></div>
 <h2 id="returning-values">Returning values</h2>
 <p>Often times you will want your function to manipulate some input data and
-return a computed result. This is accomplished using a <code>return</code> statement</p>
+return a result. This is done using a <code>return</code> statement</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="n">c</span>
 </code></pre></div>

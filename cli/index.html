@@ -730,21 +730,21 @@
 
 
 <h1 id="writing-command-line-tools">Writing command line tools</h1>
-<p>To write a command line tool in Python, open a new plain text file named 
+<p>To write a command line tool in Python, open a plain text file named 
 <code>hello.py</code> and enter the following contents</p>
-<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python</span>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello, World!&#39;</span><span class="p">)</span>
 </code></pre></div>
-<p>Save the file and make it executable by executing the following shell command</p>
+<p>Save the file and make it executable with following shell command</p>
 <div class="highlight"><pre><span></span><code>%<span class="w"> </span>chmod<span class="w"> </span>u+x<span class="w"> </span>hello.py
 </code></pre></div>
-<p>Now you can execute your script from the command line</p>
+<p>Now, you should be able to execute your script from the command line</p>
 <div class="highlight"><pre><span></span><code>%<span class="w"> </span>./hello.py
 Hello,<span class="w"> </span>World!
 </code></pre></div>
 <h2 id="command-line-arguments">Command line arguments</h2>
-<p>Imagine that you want to write a script to download data from your local 
+<p>Let's assume that you want to write a script to download data from your local 
 <a href="https://xnat.org">XNAT</a>
 installation. You'll need to accept the command line arguments <code>--hostname</code>, 
 <code>--session</code>, and <code>--output-dir</code></p>
@@ -759,14 +759,14 @@ arguments using
 <a href="https://docs.python.org/3/library/argparse.html"><code>argparse</code></a>.</p>
 <h2 id="argparse">argparse</h2>
 <h3 id="defining-command-line-arguments">defining command line arguments</h3>
-<p>To define command line arguments, first import the <code>argparse</code> module and create 
-an instance of 
+<p>To define command line arguments, import the <code>argparse</code> module and create an 
+instance of 
 <a href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser"><code>argparse.ArgumentParser</code></a> </p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">argparse</span>
 
 <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
 </code></pre></div>
-<p>Now, you can add your arguments to the <code>parser</code> object by calling 
+<p>Now you can add your arguments to the <code>parser</code> object by calling 
 <a href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser.add_argument"><code>parser.add_argument</code></a></p>
 <div class="highlight"><pre><span></span><code><span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
 <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--hostname&#39;</span><span class="p">)</span>
@@ -781,12 +781,12 @@ an instance of
 </code></pre></div>
 <h2 id="accessing-the-command-line-arguments">accessing the command line arguments</h2>
 <p>Each command line argument is automatically converted into a property on the 
-object returned by <code>parse_args()</code>. The name of the property is similar but 
-not identical to the name of the argument that was declared. There are two 
+object returned by <code>parse_args()</code>. The name of the property is similar (but 
+not identical) to the name of the argument that was declared. There are two 
 translation rules to remember</p>
 <ul>
 <li>Remove any leading dashes e.g., <code>-</code> or <code>--</code>, from the argument name</li>
-<li>Replace any embedded dash <code>-</code> within the argument name with an underscore <code>_</code></li>
+<li>Replace any embedded dash <code>-</code> with an underscore <code>_</code></li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;host is </span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">hostname</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;project </span><span class="si">{</span><span class="n">args</span><span class="o">.</span><span class="n">project</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>

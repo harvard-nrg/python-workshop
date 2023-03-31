@@ -716,7 +716,7 @@
 
 
 <h1 id="variables-assignment-and-types">Variables, assignment, and types</h1>
-<p>This may seem a bit elementary, but let's review how to define variables and go 
+<p>This may seem elementary, but let us review how to define variables and go 
 over the various 
 <a href="https://en.wikipedia.org/wiki/Language_primitive"><em>primitive types</em></a>
 in Python.</p>
@@ -726,23 +726,23 @@ variable <code>pi</code></p>
 <div class="highlight"><pre><span></span><code><span class="n">pi</span> <span class="o">=</span> <span class="mf">3.1415</span>
 </code></pre></div>
 <div class="admonition note">
-<p>Note that you do not need to use <code>let</code>, <code>var</code>, or provide any type hinting 
-keywords before a variable declaration. You also don't need a semicolon 
-at the end of each statement.</p>
+<p>Note that you do not need to use <code>let</code>, <code>var</code>, or provide any type keywords 
+before a variable declaration. You also don't need to terminate a statement
+with a semicolon, as you do in many other languages.</p>
 </div>
 <h3 id="defining-a-variable-from-an-expression">defining a variable from an expression</h3>
 <p>The right side of a variable assignment does not need to be a static value. It 
 can be an expression</p>
 <div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span>
 </code></pre></div>
-<p>Python will evaluate the right side of the assignment operator and send the 
-result to the left. This left-right associative property allows you to use an 
-existing variable to redefine itself</p>
+<p>Python will evaluate the right side of the assignment operator <code>=</code> and send the 
+result to the left. This property allows you to use an existing variable to 
+redefine itself</p>
 <div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">1</span>
 </code></pre></div>
 <h2 id="primitive-types">Primitive types</h2>
-<p>Python includes several low-level <em>primitive</em> data types such as integers 
-<code>int</code>, decimals <code>float</code>, strings <code>str</code>, booleans <code>bool</code>, and null <code>None</code></p>
+<p>Python includes several <em>primitive</em> data types such as integers <code>int</code>, decimals 
+<code>float</code>, strings <code>str</code>, booleans <code>bool</code>, and null <code>None</code></p>
 <div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>                               <span class="c1"># int</span>
 <span class="n">b</span> <span class="o">=</span> <span class="mf">3.14</span>                            <span class="c1"># float</span>
 <span class="n">c</span> <span class="o">=</span> <span class="s2">&quot;I&#39;m a double quoted string&quot;</span>    <span class="c1"># str</span>
@@ -761,7 +761,7 @@ embedded quote with a backslash <code>\</code> character as shown above.</p>
 <h2 id="checking-types">Checking types</h2>
 <p>You can check the type of a variable or its 
 <a href="https://docs.python.org/3/tutorial/classes.html">class</a>
-at any time by passing it to the built-in
+by passing it to the built-in
 <a href="https://docs.python.org/3/library/functions.html#type"><code>type()</code></a>
 function.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>

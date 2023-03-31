@@ -776,23 +776,28 @@ created by
 <a href="https://en.wikipedia.org/wiki/Guido_van_Rossum">Guido van Rossum</a>. </p>
 <h3 id="2-to-3">2 to 3</h3>
 <p>Python has undergone three major revisions since it's initial release back in 
-1991. The most recent revision was Python 2 to 3. Python 2 still exists, but 
-was
+1991. The most recent revision was Python 2 to 3. It is recommended that you 
+use Python 3. </p>
+<div class="admonition note">
+<p>Python 2 still exists, but was
 <a href="https://www.python.org/doc/sunset-python-2/">officially deprecated</a>
 on January 1st, 2020.</p>
+</div>
 <h2 id="the-interpreter">The interpreter</h2>
 <p>Instead of having to
 <a href="https://en.wikipedia.org/wiki/Compiled_language">compile</a> 
 source code into 
 <a href="https://en.wikipedia.org/wiki/Machine_code">machine code</a>,
-Python executes your code
-one line at a time using an 
-<a href="https://en.wikipedia.org/wiki/Interpreter_(computing)"><em>interpreter</em></a>.</p>
+Python uses an 
+<a href="https://en.wikipedia.org/wiki/Interpreter_(computing)"><em>interpreter</em></a>
+to execute your code one line at a time.</p>
 <h3 id="starting-the-interpreter">starting the interpreter</h3>
-<p>Python should be installed by default on most Linux and macOS systems. To start 
-the interpreter, simply open a terminal and type <code>python</code> or <code>python3</code> at the 
+<p>Python should be installed by default on most Linux and macOS systems. For 
+Windows, you should consider installing Python through the 
+<a href="https://learn.microsoft.com/en-us/windows/wsl/install">Windows Subsystem for Linux</a>.
+To start the interpreter, open a terminal and type <code>python3</code> at the 
 command prompt and hit <kbd>Enter</kbd></p>
-<div class="highlight"><pre><span></span><code>% python
+<div class="highlight"><pre><span></span><code>% python3
 Python 3.8.2 (default, Mar 26 2020, 15:43:04) 
 [Clang 11.0.3 (clang-1103.0.32.29)] on darwin
 Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
@@ -803,8 +808,7 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 <p>If you receive a <code>command not found</code> error, either your system does 
 not have Python installed, or your environment is misconfigured. Try
 logging into a FASSE host and use one of the existing Python modules</p>
-<div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>ncf
-module<span class="w"> </span>load<span class="w"> </span>miniconda3/py39_4.11.0-ncf
+<div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>ncf<span class="w"> </span>miniconda3/py39_4.11.0-ncf
 </code></pre></div>
 <p>If that doesn't work, 
 <a href="https://www.rc.fas.harvard.edu/about/contact/">contact a system administrator</a>.</p>
@@ -816,12 +820,13 @@ module<span class="w"> </span>load<span class="w"> </span>miniconda3/py39_4.11.0
 <span class="mi">2</span>
 <span class="o">&gt;&gt;&gt;</span>
 </code></pre></div>
-<p>Python will read the input statement, evaluate it, print the result, and loop 
-back to the command prompt. This is known as a 
-<a href="https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop">read-evaluate-print-loop</a>
+<p>Python will read the input statement, evaluate (execute) it, print the result, 
+and loop back to the command prompt. This is known as a 
+<a href="https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop">read-eval-print-loop</a>
 or REPL.</p>
 <h3 id="comments">comments</h3>
-<p>Comments begin with a hash <code>#</code> and will be ignored</p>
+<p>In Python, comments begin with a hash <code>#</code> character and will be ignored by the 
+interpreter</p>
 <div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="c1"># this is a comment</span>
 </code></pre></div>
 <p>For multi-line comments, you can use multiple hash <code>#</code> characters or triple 

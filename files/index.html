@@ -800,18 +800,18 @@ method on the resulting file object</p>
 <h3 id="character-encoding">character encoding</h3>
 <p>Calling <code>open()</code> on a file without any additional arguments will assume the 
 file being opened is a text file containing a UTF-8 encoded string. If you 
-know that is not the case, you need to open the file in <em>read binary mode</em> 
-by passing <code>rb</code> as the second argument</p>
+know this is not the case, you are responsible for opening the file in 
+<em>binary mode</em> by passing <code>rb</code> as the mode</p>
 <div class="highlight"><pre><span></span><code><span class="n">fo</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>
 </code></pre></div>
-<p>Calling the <code>.read()</code> method on the resulting file object will now yield a 
-byte-string. To decode this byte-string, you must call <code>.decode()</code> with the 
+<p>Calling the <code>.read()</code> method on the resulting file object will yield a 
+byte-string. To decode the byte-string, you must call <code>.decode()</code> with the 
 correct character encoding as the first argument</p>
 <div class="highlight"><pre><span></span><code><span class="n">content</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">)</span>
 </code></pre></div>
 <div class="admonition tip">
-<p>UTF-8 is quite common and backwards compatible with ASCII, but is 
-certainly not the only character encoding.</p>
+<p>UTF-8 is common, and backwards compatible with ASCII, but is 
+not the only character encoding.</p>
 </div>
 <h2 id="writing-a-file">Writing a file</h2>
 <p>The process for writing a file is similar to reading. Simply open the file 
@@ -822,7 +822,7 @@ using the built-in <code>open()</code> function, however you need to open the fi
 <span class="n">fo</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Hello, World!</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 </code></pre></div>
 <p>It's more important to call <code>.close()</code> after writing a file to ensure that 
-the write buffer has been flushed to disk</p>
+the write buffer has been flushed</p>
 <div class="highlight"><pre><span></span><code><span class="n">fo</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </code></pre></div>
 <h2 id="appending-to-a-file">Appending to a file</h2>
@@ -843,14 +843,14 @@ interface. To use a context manager, you wrap the function call in a
 <div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fo</span><span class="p">:</span>
     <span class="n">fo</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Hello, World!</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 </code></pre></div>
-<p>The benefit is that as soon as you dedent the <code>with</code> block, the file will be 
-closed.</p>
+<p>The benefit is that as soon as you dedent from the <code>with</code> block, your file will 
+be automatically closed. It's a good habit to use <code>with open</code>.</p>
 <h2 id="csv-files">CSV files</h2>
-<p>We'll take a moment to explore the
+<p>Let's take a moment to explore the
 <a href="https://docs.python.org/3/library/csv.html"><code>csv</code></a>
 module for reading a
 <a href="https://en.wikipedia.org/wiki/Comma-separated_values">CSV</a>
-file. To begin using the <code>csv</code> module, import it </p>
+file. To begin, import the module</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">csv</span>
 </code></pre></div>
 <h3 id="reading-csv-basic">Reading CSV (basic)</h3>
@@ -860,8 +860,8 @@ Subject_001,1,1
 Subject_002,2,0
 Subject_003,3,1
 </code></pre></div>
-<p>We would open this CSV file using <code>open()</code> function, then pass the resulting 
-file object to <code>csv.reader()</code>. This will return a CSV reader object</p>
+<p>Open this CSV file using <code>open()</code> function, then pass the resulting file object 
+to <code>csv.reader()</code>. This will return a CSV reader object</p>
 <div class="highlight"><pre><span></span><code><span class="n">fo</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;file.csv&#39;</span><span class="p">)</span>
 
 <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">fo</span><span class="p">)</span>
