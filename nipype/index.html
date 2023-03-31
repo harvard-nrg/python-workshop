@@ -1,933 +1,221 @@
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
-    
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      
-      
-      
-      
-        <link rel="prev" href="../recommendations/">
-      
-      
-      <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.4">
-    
-    
-      
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
         <title>Nipype - Python for Neuroimaging</title>
-      
-    
-    
-      <link rel="stylesheet" href="../assets/stylesheets/main.240905d7.min.css">
-      
-        
-        <link rel="stylesheet" href="../assets/stylesheets/palette.a0c5b2b5.min.css">
-      
-      
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
 
-    
-    
-    
-      
-        
-        
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
-      
-    
-    
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
-    
-      
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
 
-    
-    
-    
-  </head>
-  
-  
-    
-    
-    
-    
-    
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
-  
-    
-    
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
-    <div data-md-component="skip">
-      
-        
-        <a href="#_1" class="md-skip">
-          Skip to content
-        </a>
-      
-    </div>
-    <div data-md-component="announce">
-      
-    </div>
-    
-    
-      
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Python for Neuroimaging</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-  
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Introduction</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../basics/" class="nav-link">Variables and primitive types</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../math/" class="nav-link">Math operators</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Data structures <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../list/" class="dropdown-item">List</a>
+</li>
+                                    
+<li>
+    <a href="../set/" class="dropdown-item">Set</a>
+</li>
+                                    
+<li>
+    <a href="../dict/" class="dropdown-item">Dict</a>
+</li>
+                                    
+<li>
+    <a href="../tuple/" class="dropdown-item">Tuple</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="../print/" class="nav-link">Print and string formatting</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Control flow <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../conditional/" class="dropdown-item">operators</a>
+</li>
+                                    
+<li>
+    <a href="../if/" class="dropdown-item">if</a>
+</li>
+                                    
+<li>
+    <a href="../for/" class="dropdown-item">for</a>
+</li>
+                                    
+<li>
+    <a href="../while/" class="dropdown-item">while</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="../functions/" class="nav-link">Functions</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../modules/" class="nav-link">Importing modules</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../subprocess/" class="nav-link">Subprocesses</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../cli/" class="nav-link">Writing command line tools</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../files/" class="nav-link">Reading and writing files</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../virtualenv/" class="nav-link">Virtual environments</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../formats/" class="nav-link">DICOM and NIFTI</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../learn/" class="nav-link">Machine learning primer</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../recommendations/" class="nav-link">Recommendations</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">Nipype</a>
+                            </li>
+                        </ul>
 
-<header class="md-header md-header--shadow" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Python for Neuroimaging" class="md-header__button md-logo" aria-label="Python for Neuroimaging" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
-
-    </a>
-    <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
-    </label>
-    <div class="md-header__title" data-md-component="header-title">
-      <div class="md-header__ellipsis">
-        <div class="md-header__topic">
-          <span class="md-ellipsis">
-            Python for Neuroimaging
-          </span>
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../recommendations/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" class="nav-link disabled">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="md-header__topic" data-md-component="header-topic">
-          <span class="md-ellipsis">
-            
-              Nipype
-            
-          </span>
-        </div>
-      </div>
-    </div>
-    
-    
-    
-      <label class="md-header__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
-      </label>
-      <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-      </label>
-      <nav class="md-search__options" aria-label="Search">
-        
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
         </button>
-      </nav>
-      
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
-            Initializing search
-          </div>
-          <ol class="md-search-result__list" role="presentation"></ol>
-        </div>
-      </div>
     </div>
-  </div>
-</div>
-    
-    
-  </nav>
-  
-</header>
-    
-    <div class="md-container" data-md-component="container">
-      
-      
-        
-          
-        
-      
-      <main class="md-main" data-md-component="main">
-        <div class="md-main__inner md-grid">
-          
-            
-              
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
-  <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Python for Neuroimaging" class="md-nav__button md-logo" aria-label="Python for Neuroimaging" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
-
-    </a>
-    Python for Neuroimaging
-  </label>
-  
-  <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
-        Introduction
-      </a>
-    </li>
-  
 
     
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../basics/" class="md-nav__link">
-        Variables and primitive types
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../math/" class="md-nav__link">
-        Math operators
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
-          Data structures
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_4">
-          <span class="md-nav__icon md-icon"></span>
-          Data structures
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
             
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../list/" class="md-nav__link">
-        List
-      </a>
-    </li>
-  
-
+            <li class="nav-item" data-level="1"><a href="#_1" class="nav-link"></a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#why-nipype" class="nav-link">Why Nipype?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#installation" class="nav-link">Installation</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
             
-          
+            <li class="nav-item" data-level="1"><a href="#1-set-up-and-activate-virtual-env" class="nav-link">1. set-up and activate virtual env</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
             
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../set/" class="md-nav__link">
-        Set
-      </a>
-    </li>
-  
-
+            <li class="nav-item" data-level="1"><a href="#2-install-nipype-and-friends" class="nav-link">2. install nipype and friends</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
             
-          
+            <li class="nav-item" data-level="1"><a href="#3-test-install" class="nav-link">3. test install</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
             
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../dict/" class="md-nav__link">
-        Dict
-      </a>
-    </li>
-  
-
+            <li class="nav-item" data-level="1"><a href="#you-will-probably-get-warnings-but-make-sure-you-dont-have-any-errors-or-fails" class="nav-link">You will probably get warnings, but make sure you don't have any errors or fails.</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#interface-node-workflow" class="nav-link">Interface, Node, Workflow</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
             
-          
+            <li class="nav-item" data-level="1"><a href="#now-we-can-set-the-inputs" class="nav-link">now we can set the inputs</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#getting-data-in-and-out-of-your-pipeline" class="nav-link">Getting data in and out of your pipeline</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#running-your-nipype-script-and-accessing-software-packages" class="nav-link">Running your nipype script (and accessing software packages)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
             
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../tuple/" class="md-nav__link">
-        Tuple
-      </a>
-    </li>
-  
-
+            <li class="nav-item" data-level="1"><a href="#binbash" class="nav-link">!/bin/bash</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
             
-          
+            <li class="nav-item" data-level="1"><a href="#if-running-on-slurm-could-put-all-your-sbatch-lines-here" class="nav-link">if running on SLURM, could put all your #SBATCH lines here...</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
         </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../print/" class="md-nav__link">
-        Print and string formatting
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
-      
-      
-      
-        <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
-          Control flow
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_6">
-          <span class="md-nav__icon md-icon"></span>
-          Control flow
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../conditional/" class="md-nav__link">
-        operators
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../if/" class="md-nav__link">
-        if
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../for/" class="md-nav__link">
-        for
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../while/" class="md-nav__link">
-        while
-      </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../functions/" class="md-nav__link">
-        Functions
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../modules/" class="md-nav__link">
-        Importing modules
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../subprocess/" class="md-nav__link">
-        Subprocesses
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../cli/" class="md-nav__link">
-        Writing command line tools
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../files/" class="md-nav__link">
-        Reading and writing files
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../virtualenv/" class="md-nav__link">
-        Virtual environments
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../formats/" class="md-nav__link">
-        DICOM and NIFTI
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../learn/" class="md-nav__link">
-        Machine learning primer
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../recommendations/" class="md-nav__link">
-        Recommendations
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Nipype
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        Nipype
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#why-nipype" class="md-nav__link">
-    Why Nipype?
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    Installation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#interface-node-workflow" class="md-nav__link">
-    Interface, Node, Workflow
-  </a>
-  
-    <nav class="md-nav" aria-label="Interface, Node, Workflow">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#interfaces-functions-for-fun-pipelines" class="md-nav__link">
-    Interfaces: Functions for fun pipelines!
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nodes-happy-package-for-an-interface" class="md-nav__link">
-    Nodes: Happy package for an interface
-  </a>
-  
-    <nav class="md-nav" aria-label="Nodes: Happy package for an interface">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#mapnode" class="md-nav__link">
-    MapNode
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#iterfield" class="md-nav__link">
-    Iterfield
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#workflow-connecting-nodes-and-passing-data" class="md-nav__link">
-    Workflow: Connecting nodes and passing data
-  </a>
-  
-    <nav class="md-nav" aria-label="Workflow: Connecting nodes and passing data">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#to-create-a-workflow-lines-166-167" class="md-nav__link">
-    To create a workflow (lines 166-167):
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#to-connect-nodes-in-a-workflow" class="md-nav__link">
-    To connect nodes in a workflow
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#to-run-a-workflow-lines-197-199" class="md-nav__link">
-    To run a workflow (lines 197-199):
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#getting-data-in-and-out-of-your-pipeline" class="md-nav__link">
-    Getting data in and out of your pipeline
-  </a>
-  
-    <nav class="md-nav" aria-label="Getting data in and out of your pipeline">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#data-in-bidslayout" class="md-nav__link">
-    Data in: BIDSLayout
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#data-out-datasink" class="md-nav__link">
-    Data out: DataSink
-  </a>
-  
-    <nav class="md-nav" aria-label="Data out: DataSink">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#another-output-workflow-graph" class="md-nav__link">
-    Another output: Workflow graph
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#running-your-nipype-script-and-accessing-software-packages" class="md-nav__link">
-    Running your nipype script (and accessing software packages)
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-    
-  </ul>
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-            
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#why-nipype" class="md-nav__link">
-    Why Nipype?
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    Installation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#interface-node-workflow" class="md-nav__link">
-    Interface, Node, Workflow
-  </a>
-  
-    <nav class="md-nav" aria-label="Interface, Node, Workflow">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#interfaces-functions-for-fun-pipelines" class="md-nav__link">
-    Interfaces: Functions for fun pipelines!
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nodes-happy-package-for-an-interface" class="md-nav__link">
-    Nodes: Happy package for an interface
-  </a>
-  
-    <nav class="md-nav" aria-label="Nodes: Happy package for an interface">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#mapnode" class="md-nav__link">
-    MapNode
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#iterfield" class="md-nav__link">
-    Iterfield
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#workflow-connecting-nodes-and-passing-data" class="md-nav__link">
-    Workflow: Connecting nodes and passing data
-  </a>
-  
-    <nav class="md-nav" aria-label="Workflow: Connecting nodes and passing data">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#to-create-a-workflow-lines-166-167" class="md-nav__link">
-    To create a workflow (lines 166-167):
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#to-connect-nodes-in-a-workflow" class="md-nav__link">
-    To connect nodes in a workflow
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#to-run-a-workflow-lines-197-199" class="md-nav__link">
-    To run a workflow (lines 197-199):
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#getting-data-in-and-out-of-your-pipeline" class="md-nav__link">
-    Getting data in and out of your pipeline
-  </a>
-  
-    <nav class="md-nav" aria-label="Getting data in and out of your pipeline">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#data-in-bidslayout" class="md-nav__link">
-    Data in: BIDSLayout
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#data-out-datasink" class="md-nav__link">
-    Data out: DataSink
-  </a>
-  
-    <nav class="md-nav" aria-label="Data out: DataSink">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#another-output-workflow-graph" class="md-nav__link">
-    Another output: Workflow graph
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#running-your-nipype-script-and-accessing-software-packages" class="md-nav__link">
-    Running your nipype script (and accessing software packages)
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-          
-          
-            <div class="md-content" data-md-component="content">
-              <article class="md-content__inner md-typeset">
-                
-                  
-
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
 
 <h1 id="_1"><img alt="Nipype logo" src="../assets/nipype-banner.png" /></h1>
 <h2 id="why-nipype">Why Nipype?</h2>
@@ -939,19 +227,18 @@
 </ol>
 <h2 id="installation">Installation</h2>
 <p>Let's create a virtual environment (pop quiz!) in which to install nipype and its friends.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># 1. set-up and activate virtual env</span>
-module<span class="w"> </span>load<span class="w"> </span>miniconda3/py39_4.11.0-ncf
-python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>nipype39_venv
-<span class="nb">source</span><span class="w"> </span>nipype39_venv/bin/activate
-
-<span class="c1"># 2. install nipype and friends</span>
-pip<span class="w"> </span>install<span class="w"> </span>nipype<span class="w"> </span>pytest<span class="w"> </span>sphinx<span class="w"> </span><span class="nv">networkx</span><span class="o">==</span><span class="m">3</span>.0<span class="w"> </span><span class="nv">nibabel</span><span class="o">==</span><span class="m">2</span>.0.4
-
-<span class="c1"># 3. test install</span>
-python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import nipype; print(nipype.__version__)&quot;</span>
-python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import nipype; nipype.test()&quot;</span>
-<span class="c1"># You will probably get warnings, but make sure you don&#39;t have any errors or fails.</span>
-</code></pre></div>
+<p>```bash</p>
+<h1 id="1-set-up-and-activate-virtual-env">1. set-up and activate virtual env</h1>
+<p>module load miniconda3/py39_4.11.0-ncf
+python -m venv nipype39_venv
+source nipype39_venv/bin/activate</p>
+<h1 id="2-install-nipype-and-friends">2. install nipype and friends</h1>
+<p>pip install nipype pytest sphinx networkx==3.0 nibabel==2.0.4</p>
+<h1 id="3-test-install">3. test install</h1>
+<p>python -c "import nipype; print(nipype.<strong>version</strong>)"
+python -c "import nipype; nipype.test()"</p>
+<h1 id="you-will-probably-get-warnings-but-make-sure-you-dont-have-any-errors-or-fails">You will probably get warnings, but make sure you don't have any errors or fails.</h1>
+<p>```</p>
 <div class="admonition note">
 <p>To access the <a href="https://github.com/harvard-nrg/python-workshop/blob/main/docs/code/nipype_spm1stlevel.py"><em>full code of nipype_spm1stlevel.py (<strong>LINK</strong>)</em></a></p>
 </div>
@@ -965,8 +252,8 @@ python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;i
 <p><em>(Sorry I couldn't help myself.)</em></p>
 <p><a href="https://nipype.readthedocs.io/en/latest/interfaces.html"><em>Interfaces</em></a> are Python functions that wrap the magical (mostly neuroimaging) tools from other software packages (e.g., fslmaths from FSL or recon-all from Freesurfer)</p>
 <p>Like modules, interfaces aren't Python built-ins, so their modules must be imported at the beginning of your Python script (lines 1-13 of <a href="https://github.com/harvard-nrg/python-workshop/blob/main/docs/code/nipype_spm1stlevel.py"><em>nipype_spm1stlevel.py <strong>LINK</strong></em></a>):
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">nipype.interfaces</span> <span class="kn">import</span> <span class="n">fsl</span><span class="p">,</span> <span class="n">spm</span>
-</code></pre></div>
+<code>python
+from nipype.interfaces import fsl, spm</code>
 Then, we can call things that we imported as, for example: <code>spm.EstimateContrast()</code></p>
 <h3 id="nodes-happy-package-for-an-interface">Nodes: Happy package for an interface</h3>
 <p>Nodes contain the wrapped interfaces, but also:
@@ -974,82 +261,83 @@ Then, we can call things that we imported as, for example: <code>spm.EstimateCon
 2. outputs.</p>
 <p>Let's choose a simple example: <a href="https://nipype.readthedocs.io/en/latest/api/generated/nipype.interfaces.freesurfer.preprocess.html#mriconvert"><em>Freesurfer's mri_convert</em></a>.</p>
 <p>To create a node:
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">nipype.pipeline</span> <span class="kn">import</span> <span class="n">engine</span> <span class="k">as</span> <span class="n">pe</span>
-
-<span class="n">nodeVariableName</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span><span class="n">package</span><span class="o">.</span><span class="n">function</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;nameForOutputDirectory&quot;</span><span class="p">)</span>
-</code></pre></div></p>
+```Python
+from nipype.pipeline import engine as pe</p>
+<p>nodeVariableName = pe.Node(package.function(), name="nameForOutputDirectory")
+```</p>
 <p>For example (lines 138-161 of <em>nipype_spm1stlevel.py</em>):
-<div class="highlight"><pre><span></span><code><span class="n">convert</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">MRIConvert</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;convert&quot;</span><span class="p">)</span>
-
-<span class="c1"># now we can set the inputs</span>
-<span class="n">convert</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">in_file</span> <span class="o">=</span> <span class="s1">&#39;structural.nii.gz&#39;</span>
-<span class="n">convert</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">out_type</span> <span class="o">=</span> <span class="s1">&#39;nii&#39;</span>
-</code></pre></div></p>
+```python
+convert = pe.Node(freesurfer.MRIConvert(), name="convert")</p>
+<h1 id="now-we-can-set-the-inputs">now we can set the inputs</h1>
+<p>convert.inputs.in_file = 'structural.nii.gz'
+convert.inputs.out_type = 'nii'
+```</p>
 <h4 id="mapnode">MapNode</h4>
 <p>Now in the mri_convert example above, we had a Node which took a single input (1 volume) and a single output (1 volume), but in reality, you might have a bunch of images that need to be converted, but then reconverge as a single list (of multiple volumes) when it's passed on to another node. Then you'll need a <strong>MapNode</strong>.</p>
 <p><img alt="Figure of MapNode flow" src="../assets/MapNode1.png" /></p>
 <p>Lines 140-142 of <em>nipype_spm1stlevel.py</em>:
-<div class="highlight"><pre><span></span><code><span class="n">convert</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">MapNode</span><span class="p">(</span><span class="n">freesurfer</span><span class="o">.</span><span class="n">MRIConvert</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;convert&quot;</span><span class="p">,</span> <span class="n">iterfield</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;in_file&#39;</span><span class="p">])</span>
-<span class="n">convert</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">in_file</span> <span class="o">=</span> <span class="n">funcFiles</span> <span class="c1"># more on how I made this object later</span>
-<span class="n">convert</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">out_type</span> <span class="o">=</span> <span class="s1">&#39;nii&#39;</span>
-</code></pre></div></p>
+<code>python
+convert = pe.MapNode(freesurfer.MRIConvert(), name="convert", iterfield=['in_file'])
+convert.inputs.in_file = funcFiles # more on how I made this object later
+convert.inputs.out_type = 'nii'</code></p>
 <h4 id="iterfield">Iterfield</h4>
 <p>The <code>iterfield</code> entry is not limited to files or to MapNodes. You could use it for any input. For instance, if you're doing smoothing and want to try a bunch of different kernels, this input parameter could go in the iterfield. Or if you're doing a second level analysis over many contrasts, this could also go in the iterfield.</p>
 <p><img alt="Figure of Node with an iterfield" src="../assets/Iterfield1.png" /></p>
 <p>A hypothetical example:
-<div class="highlight"><pre><span></span><code><span class="n">smooth</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span><span class="n">spm</span><span class="o">.</span><span class="n">Smooth</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;smooth&quot;</span><span class="p">,</span> <span class="n">iterfield</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;fwhm&#39;</span><span class="p">])</span>
-<span class="n">smooth</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">fwhm</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
-</code></pre></div></p>
+<code>python
+smooth = pe.Node(spm.Smooth(), name="smooth", iterfield=['fwhm'])
+smooth.inputs.fwhm = [[2, 2, 2],[4, 4, 4]]</code></p>
 <h3 id="workflow-connecting-nodes-and-passing-data">Workflow: Connecting nodes and passing data</h3>
 <p>Workflows are the biggest "thing" in nipype. It links a series of nodes.</p>
 <h4 id="to-create-a-workflow-lines-166-167">To create a workflow (lines 166-167):</h4>
-<div class="highlight"><pre><span></span><code><span class="n">l1analysis</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">Workflow</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;nipype_1stlevel&#39;</span><span class="p">)</span>
-<span class="n">l1analysis</span><span class="o">.</span><span class="n">base_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">baseDir</span><span class="p">,</span> <span class="n">outDir</span><span class="p">)</span>
-</code></pre></div>
+<p><code>python
+l1analysis = pe.Workflow(name='nipype_1stlevel')
+l1analysis.base_dir = os.path.join(baseDir, outDir)</code></p>
 <p>The important property of workflows is that it links the nodes. In the above Node and MapNode examples, we gave the node its input, but if we really want to use Nipype, one node is going to pass its <em>output</em> to another node's <em>input</em>.</p>
 <h4 id="to-connect-nodes-in-a-workflow">To connect nodes in a workflow</h4>
 <p>So after we make our nodes, we can connect them and tell the workflow which output should go to which input. The basic format is:</p>
-<div class="highlight"><pre><span></span><code><span class="n">workflowname</span><span class="o">.</span><span class="n">connect</span><span class="p">([(</span><span class="n">node1name</span><span class="p">,</span> <span class="n">node2name</span><span class="p">,</span> <span class="p">[(</span><span class="s1">&#39;node1outputparameter&#39;</span><span class="p">,</span><span class="s1">&#39;node2inputparameter&#39;</span><span class="p">)]</span> <span class="p">)])</span>
-</code></pre></div>
+<p><code>Python
+workflowname.connect([(node1name, node2name, [('node1outputparameter','node2inputparameter')] )])</code></p>
 <p>For example (lines 172-175):
-<div class="highlight"><pre><span></span><code><span class="n">l1analysis</span><span class="o">.</span><span class="n">connect</span><span class="p">([(</span><span class="n">convert</span><span class="p">,</span> <span class="n">modelspec</span><span class="p">,</span> <span class="p">[(</span><span class="s1">&#39;out_file&#39;</span><span class="p">,</span> <span class="s1">&#39;functional_runs&#39;</span><span class="p">)]),</span>
-                    <span class="p">(</span><span class="n">modelspec</span><span class="p">,</span> <span class="n">level1design</span><span class="p">,</span> <span class="p">[(</span><span class="s1">&#39;session_info&#39;</span><span class="p">,</span> <span class="s1">&#39;session_info&#39;</span><span class="p">)]),</span>
-                    <span class="p">(</span><span class="n">level1design</span><span class="p">,</span> <span class="n">level1estimate</span><span class="p">,</span> <span class="p">[(</span><span class="s1">&#39;spm_mat_file&#39;</span><span class="p">,</span> <span class="s1">&#39;spm_mat_file&#39;</span><span class="p">)]),</span>
-                    <span class="p">(</span><span class="n">level1estimate</span><span class="p">,</span> <span class="n">contrastestimate</span><span class="p">,</span> <span class="p">[(</span><span class="s1">&#39;spm_mat_file&#39;</span><span class="p">,</span> <span class="s1">&#39;spm_mat_file&#39;</span><span class="p">),</span>
-                                                        <span class="p">(</span><span class="s1">&#39;beta_images&#39;</span><span class="p">,</span> <span class="s1">&#39;beta_images&#39;</span><span class="p">),</span>
-                                                        <span class="p">(</span><span class="s1">&#39;residual_image&#39;</span><span class="p">,</span><span class="s1">&#39;residual_image&#39;</span><span class="p">)])])</span>
-</code></pre></div></p>
+<code>Python
+l1analysis.connect([(convert, modelspec, [('out_file', 'functional_runs')]),
+                    (modelspec, level1design, [('session_info', 'session_info')]),
+                    (level1design, level1estimate, [('spm_mat_file', 'spm_mat_file')]),
+                    (level1estimate, contrastestimate, [('spm_mat_file', 'spm_mat_file'),
+                                                        ('beta_images', 'beta_images'),
+                                                        ('residual_image','residual_image')])])</code></p>
 <h4 id="to-run-a-workflow-lines-197-199">To run a workflow (lines 197-199):</h4>
 <p>There are several options for how to run your workflow.
-<div class="highlight"><pre><span></span><code><span class="n">l1analysis</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">plugin</span><span class="o">=</span><span class="s1">&#39;MultiProc&#39;</span><span class="p">,</span><span class="n">plugin_args</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;n_procs&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">})</span>
-<span class="n">l1analysis</span><span class="o">.</span><span class="n">write_graph</span><span class="p">()</span>
-</code></pre></div>
+<code>python
+l1analysis.run(plugin='MultiProc',plugin_args={'n_procs':2})
+l1analysis.write_graph()</code>
 You can run with other <a href="https://nipype.readthedocs.io/en/0.11.0/users/plugins.html"><em>plugins</em></a>, but FASSE seems to like this best.</p>
 <h2 id="getting-data-in-and-out-of-your-pipeline">Getting data in and out of your pipeline</h2>
 <p>There are many ways to get your data in and out of a nipype workflow, but my favorites are BIDSLayout and datasync.</p>
 <h3 id="data-in-bidslayout">Data in: BIDSLayout</h3>
 <p>BIDSLayout is from pybids (not nipype), but if your data in already in BIDS format (which it should be :), I find this to be the easiest way to grab imaging data.</p>
 <p>For instance, to grab your fMRIPrep-ed functional files:
-<div class="highlight"><pre><span></span><code><span class="n">layout</span> <span class="o">=</span> <span class="n">BIDSLayout</span><span class="p">(</span><span class="n">BIDSDir</span><span class="p">,</span> <span class="n">derivatives</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">funcFiles</span> <span class="o">=</span> <span class="n">layout</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">datatype</span><span class="o">=</span><span class="s1">&#39;func&#39;</span><span class="p">,</span> <span class="n">subject</span><span class="o">=</span><span class="n">subName</span><span class="p">,</span>
-                       <span class="n">task</span><span class="o">=</span><span class="n">task</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">sesName</span><span class="p">,</span> <span class="n">space</span><span class="o">=</span><span class="n">space</span><span class="p">,</span>
-                       <span class="n">suffix</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">extension</span><span class="o">=</span><span class="s1">&#39;nii.gz&#39;</span><span class="p">,</span>
-                       <span class="n">return_type</span><span class="o">=</span><span class="s1">&#39;filename&#39;</span><span class="p">)</span>
-</code></pre></div>
+<code>Python
+layout = BIDSLayout(BIDSDir, derivatives=True, validate=False)
+funcFiles = layout.get(datatype='func', subject=subName,
+                       task=task, session=sesName, space=space,
+                       suffix='bold', extension='nii.gz',
+                       return_type='filename')</code>
 Anything that's specified in a <code>thing-spec</code> (e.g., <code>direction-AP</code>) format in your BIDS-compliant file name is fair game. Also, note that if you want something from your raw data directory (aka <code>bids</code> as opposed to the <code>bids/derivatives</code> directory), set <code>derivatives=False</code>.</p>
 <h3 id="data-out-datasink">Data out: DataSink</h3>
 <p>Nipype automatically outputs all the outputs of each node to its own directory, but it can be a bit messy, especially for MapNodes or Nodes with iterfields (e.g., <em>nipype_1stlevel/convert/mapflow/_convert0/out_file.nii</em>).</p>
 <p><img alt="Directory of nipype output" src="../assets/nipype_output.png" /></p>
 <p>But a <strong>DataSink</strong> Node lets you choose which files you want and their organizational structure.</p>
 <p>So first, you make your DataSink Node like any other Node (line 183-184):</p>
-<div class="highlight"><pre><span></span><code><span class="n">datasink</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span><span class="n">nio</span><span class="o">.</span><span class="n">DataSink</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;datasink&quot;</span><span class="p">)</span>
-<span class="n">datasink</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">base_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">baseDir</span><span class="p">,</span><span class="n">outDir</span><span class="p">)</span>
-</code></pre></div>
+<p>```python
+datasink = pe.Node(nio.DataSink(), name="datasink")
+datasink.inputs.base_directory = os.path.join(baseDir,outDir)</p>
+<p>```</p>
 <p>Then you connect any outputs you like to <em>datasink</em>. Notice that the <code>grumpy.@cat</code> structure; it will create a folder called <em>grumpy</em> and name the files with the <em>cat</em> prefix. If you just put a regular string, it will put the files in a directory of that name (like the SPM.mat files below)</p>
-<div class="highlight"><pre><span></span><code><span class="n">l1analysis</span><span class="o">.</span><span class="n">connect</span><span class="p">([(</span><span class="n">contrastestimate</span><span class="p">,</span> <span class="n">datasink</span><span class="p">,[(</span><span class="s1">&#39;con_images&#39;</span><span class="p">,</span> <span class="s1">&#39;contrasts.@con&#39;</span><span class="p">),</span>
-                                                 <span class="p">(</span><span class="s1">&#39;spmT_images&#39;</span><span class="p">,</span> <span class="s1">&#39;contrasts.@T&#39;</span><span class="p">)]),</span>
-                    <span class="p">(</span><span class="n">level1estimate</span><span class="p">,</span> <span class="n">datasink</span><span class="p">,[(</span><span class="s1">&#39;spm_mat_file&#39;</span><span class="p">,</span> <span class="s1">&#39;spm_mat&#39;</span><span class="p">)])])</span>
-</code></pre></div>
+<p><code>python
+l1analysis.connect([(contrastestimate, datasink,[('con_images', 'contrasts.@con'),
+                                                 ('spmT_images', 'contrasts.@T')]),
+                    (level1estimate, datasink,[('spm_mat_file', 'spm_mat')])])</code></p>
 <p><img alt="Directory of nipype output" src="../assets/datasink_output.png" /></p>
 <h4 id="another-output-workflow-graph">Another output: Workflow graph</h4>
 <p>One other nice feature of Nipype is that it automatically gives you a nice figure showing the connected graph of your nodes. It will be in the main output directory, called <em>graph.png</em></p>
@@ -1058,65 +346,96 @@ Anything that's specified in a <code>thing-spec</code> (e.g., <code>direction-AP
 <h2 id="running-your-nipype-script-and-accessing-software-packages">Running your nipype script (and accessing software packages)</h2>
 <p>Nipype is providing functions which Python-ize <em>access</em> to tools that may be written in another language, but not the tools themselves. You still need to <code>module load</code> (if on FASSE) or install the software packages.</p>
 <p>The tricky thing is that we can't load the modules in any permanent way from <em>within</em> Python. If you're on FASSE, I suggest having a <strong>separate script</strong> that loads the necessary modules and then calls the Python script. (<a href="https://github.com/harvard-nrg/python-workshop/blob/main/docs/code/run_spm1stlevel.sh"><em>Example script: run_spm1stlevel.sh <strong>LINK</strong></em></a>)</p>
-<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-<span class="c1"># if running on SLURM, could put all your #SBATCH lines here...</span>
-
-module<span class="w"> </span>load<span class="w"> </span>ncf
-module<span class="w"> </span>load<span class="w"> </span>matlab/R2020b-fasrc01
-module<span class="w"> </span>load<span class="w"> </span>spm/12.7487-fasrc01
-module<span class="w"> </span>load<span class="w"> </span>freesurfer/6.0.0-ncf
-module<span class="w"> </span>load<span class="w"> </span>fsl/6.0.4-ncf
-
-python<span class="w"> </span>nipype_spm1stlevel.py
-</code></pre></div>
+<p>```bash</p>
+<h1 id="binbash">!/bin/bash</h1>
+<h1 id="if-running-on-slurm-could-put-all-your-sbatch-lines-here">if running on SLURM, could put all your #SBATCH lines here...</h1>
+<p>module load ncf
+module load matlab/R2020b-fasrc01
+module load spm/12.7487-fasrc01
+module load freesurfer/6.0.0-ncf
+module load fsl/6.0.4-ncf</p>
+<p>python nipype_spm1stlevel.py
+```</p>
 <p>Then you would run this as:
-<div class="highlight"><pre><span></span><code>sh<span class="w"> </span>run_spm1stlevel.sh
-</code></pre></div></p>
+<code>bash
+sh run_spm1stlevel.sh</code></p>
 <p>or if you're running on SLURM
-<div class="highlight"><pre><span></span><code>sbatch<span class="w"> </span>run_spm1stlevel.sh
-</code></pre></div></p>
-
-
-
-
-
-                
-              </article>
+<code>bash
+sbatch run_spm1stlevel.sh</code></p></div>
             </div>
-          
-          
         </div>
-        
-      </main>
-      
-        <footer class="md-footer">
-  
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-copyright">
-  
-  
-    Made with
-    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-      Material for MkDocs
-    </a>
-  
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
 </div>
-      
-    </div>
-  </div>
-</footer>
-      
-    </div>
-    <div class="md-dialog" data-md-component="dialog">
-      <div class="md-dialog__inner md-typeset"></div>
-    </div>
-    
-    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
-    
-    
-      <script src="../assets/javascripts/bundle.19047be9.min.js"></script>
-      
-    
-  </body>
+
+    </body>
 </html>
