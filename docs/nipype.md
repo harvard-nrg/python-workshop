@@ -94,10 +94,31 @@ smooth = pe.Node(spm.Smooth(), name="smooth", iterfield=['fwhm'])
 smooth.inputs.fwhm = [[2, 2, 2],[4, 4, 4]]
 ```
 
+#### IdentityNode: To iterate over participants (or sessions)
+
+One quirk of iterfield is that it only works for input fields. So this is fine for iterating over files or smoothing kernels, or contrasts, but it won't work for iterating over subjects or sessions. Instead, you'll need to use an [_IdentityInterface (link)_](https://nipype.readthedocs.io/en/latest/api/generated/nipype.interfaces.utility.base.html#nipype-interfaces-utility-base-identityinterface)
+
+```python
+subject_list = ['01','02']
+infosource = Node(IdentityInterface(fields=['subject_id']),
+              name="infosource")
+infosource.iterables = [('subject_id', subject_list)]
+```
+The only difference is that you'll have to implement BIDSDataGrabber in a Node:
+
+```python
+from nipype.interfaces.io import BIDSDataGrabber
+
+grabber = Node(BIDSDataGrabber(), name='bidsgrabber')
+grabber.inputs.base_dir = BIDSDir
+```
+
+And in a moment, we'll see how to pass the infosource subject_list to your grabber node.
+
 ### Workflow: Connecting nodes and passing data
 Workflows are the biggest "thing" in nipype. It links a series of nodes.
 
-#### To create a workflow (lines 166-167): ####
+#### To create a workflow (lines 166-167):
 
 ```python
 l1analysis = pe.Workflow(name='nipype_1stlevel')
@@ -171,7 +192,7 @@ l1analysis.connect([(contrastestimate, datasink,[('con_images', 'contrasts.@con'
 
 ![Directory of nipype output](./assets/datasink_output.png)
 
-#### Another output: Workflow graph ####
+### Another output: Workflow graph ###
 
 One other nice feature of Nipype is that it automatically gives you a nice figure showing the connected graph of your nodes. It will be in the main output directory, called *graph.png*
 
