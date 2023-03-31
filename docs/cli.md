@@ -1,21 +1,20 @@
 # Writing command line tools
-
-To write a command line tool in Python, open a new plain text file named 
+To write a command line tool in Python, open a plain text file named 
 `hello.py` and enter the following contents
 
 ```python
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 print('Hello, World!')
 ```
 
-Save the file and make it executable by executing the following shell command
+Save the file and make it executable with following shell command
 
 ```bash
 % chmod u+x hello.py
 ```
 
-Now you can execute your script from the command line
+Now, you should be able to execute your script from the command line
 
 ```bash
 % ./hello.py
@@ -23,8 +22,7 @@ Hello, World!
 ```
 
 ## Command line arguments
-
-Imagine that you want to write a script to download data from your local 
+Let's assume that you want to write a script to download data from your local 
 [XNAT](https://xnat.org)
 installation. You'll need to accept the command line arguments `--hostname`, 
 `--session`, and `--output-dir`
@@ -44,9 +42,8 @@ arguments using
 ## argparse
 
 ### defining command line arguments
-
-To define command line arguments, first import the `argparse` module and create 
-an instance of 
+To define command line arguments, import the `argparse` module and create an 
+instance of 
 [`argparse.ArgumentParser`](https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser) 
 
 ```python
@@ -55,7 +52,7 @@ import argparse
 parser = argparse.ArgumentParser()
 ```
 
-Now, you can add your arguments to the `parser` object by calling 
+Now you can add your arguments to the `parser` object by calling 
 [`parser.add_argument`](https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser.add_argument)
 
 ```python
@@ -67,7 +64,6 @@ parser.add_argument('--output-dir')
 ```
 
 ### parsing the command line
-
 To parse the command line arguments entered by the user, simply call
 [`parser.parse_args`](https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser.parse_args)
 
@@ -76,14 +72,13 @@ args = parser.parse_args()
 ```
 
 ## accessing the command line arguments
-
 Each command line argument is automatically converted into a property on the 
-object returned by `parse_args()`. The name of the property is similar but 
-not identical to the name of the argument that was declared. There are two 
+object returned by `parse_args()`. The name of the property is similar (but 
+not identical) to the name of the argument that was declared. There are two 
 translation rules to remember
 
 * Remove any leading dashes e.g., `-` or `--`, from the argument name
-* Replace any embedded dash `-` within the argument name with an underscore `_`
+* Replace any embedded dash `-` with an underscore `_`
 
 ```python
 print(f'host is {args.hostname}')

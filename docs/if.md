@@ -8,7 +8,6 @@
     is considered _open_ on indent and _closed_ on dedent.
 
 ## The `if` condition
-
 The general syntax of an `if` statement in Python is
 
 ```python
@@ -27,7 +26,6 @@ if a == 10:
 ```
 
 ## The `else` clause
-
 If you want to execute a different block of code if the evaluated condition 
 returns `False`, you would use an `else` clause
 
@@ -39,7 +37,6 @@ else:
 ```
 
 ## The `elif` clause
-
 We can further complicate this `if` statement with an `elif`, short for 
 _else if_
 

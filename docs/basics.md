@@ -1,12 +1,10 @@
 # Variables, assignment, and types
-
-This may seem a bit elementary, but let's review how to define variables and go 
+This may seem elementary, but let us review how to define variables and go 
 over the various 
 [_primitive types_](https://en.wikipedia.org/wiki/Language_primitive)
 in Python.
 
 ## Defining a variable
-
 Enter the following statement at the Python command prompt `>>>` to define the 
 variable `pi`
 
@@ -15,12 +13,11 @@ pi = 3.1415
 ```
 
 !!! note ""
-    Note that you do not need to use `let`, `var`, or provide any type hinting 
-    keywords before a variable declaration. You also don't need a semicolon 
-    at the end of each statement.
+    Note that you do not need to use `let`, `var`, or provide any type keywords 
+    before a variable declaration. You also don't need to terminate a statement
+    with a semicolon, as you do in many other languages.
 
 ### defining a variable from an expression
-
 The right side of a variable assignment does not need to be a static value. It 
 can be an expression
 
@@ -28,18 +25,17 @@ can be an expression
 a = 1 + 1
 ```
 
-Python will evaluate the right side of the assignment operator and send the 
-result to the left. This left-right associative property allows you to use an 
-existing variable to redefine itself
+Python will evaluate the right side of the assignment operator `=` and send the 
+result to the left. This property allows you to use an existing variable to 
+redefine itself
 
 ```python
 a = a + 1
 ```
 
 ## Primitive types
-
-Python includes several low-level _primitive_ data types such as integers 
-`int`, decimals `float`, strings `str`, booleans `bool`, and null `None`
+Python includes several _primitive_ data types such as integers `int`, decimals 
+`float`, strings `str`, booleans `bool`, and null `None`
 
 ```python
 a = 1                               # int
@@ -58,10 +54,9 @@ g = None                            # None
     embedded quote with a backslash `\` character as shown above.
 
 ## Checking types
-
 You can check the type of a variable or its 
 [class](https://docs.python.org/3/tutorial/classes.html)
-at any time by passing it to the built-in
+by passing it to the built-in
 [`type()`](https://docs.python.org/3/library/functions.html#type)
 function.
 

@@ -1,7 +1,6 @@
 # Control flow
 
 ## The `for` loop
-
 A `for` loop allows the same block of code to be executed multiple times
 
 ```python
@@ -10,7 +9,6 @@ for item in iterable:
 ```
 
 ## Iteration
-
 Many of the data structures we've reviewed are defined as
 [iterables](https://docs.python.org/3/glossary.html#term-iterable)
 in Python. Suppose we have a list of scan information where each item in the 
@@ -54,8 +52,7 @@ print(numbers)
 This will print the result `[3, 4]`.
 
 ## Iterating over a dictionary
-
-It's common to iterate over a `dict`, however there are some subtle
+It's also common to iterate over a `dict`, however there are some subtle
 differences. By default, when you iterate over a `dict` you'll only receive 
 its keys
 
@@ -72,7 +69,7 @@ for key in a:
 ```
 
 If you want to iterate over the `dict` returning both the `key` and `value` 
-pairs, you would use the following syntax
+as a pair, you would use the following syntax
 
 ```python
 for key,value in a.items():
