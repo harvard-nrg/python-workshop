@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Print and string formatting - Python for Neuroimaging</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Python for Neuroimaging</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Introduction</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../basics/" class="nav-link">Variables and primitive types</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../math/" class="nav-link">Math operators</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Data structures <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../list/" class="dropdown-item">List</a>
+</li>
+                                    
+<li>
+    <a href="../set/" class="dropdown-item">Set</a>
+</li>
+                                    
+<li>
+    <a href="../dict/" class="dropdown-item">Dict</a>
+</li>
+                                    
+<li>
+    <a href="../tuple/" class="dropdown-item">Tuple</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">Print and string formatting</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Control flow <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../conditional/" class="dropdown-item">operators</a>
+</li>
+                                    
+<li>
+    <a href="../if/" class="dropdown-item">if</a>
+</li>
+                                    
+<li>
+    <a href="../for/" class="dropdown-item">for</a>
+</li>
+                                    
+<li>
+    <a href="../while/" class="dropdown-item">while</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="../functions/" class="nav-link">Functions</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../modules/" class="nav-link">Importing modules</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../subprocess/" class="nav-link">Subprocesses</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../cli/" class="nav-link">Writing command line tools</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../files/" class="nav-link">Reading and writing files</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../virtualenv/" class="nav-link">Virtual environments</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../formats/" class="nav-link">DICOM and NIFTI</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../learn/" class="nav-link">Machine learning primer</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../recommendations/" class="nav-link">Recommendations</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../nipype/" class="nav-link">Nipype</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../tuple/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../conditional/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#print-and-string-formatting" class="nav-link">Print and string formatting</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#simple-use-case" class="nav-link">Simple use case</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#string-formatting" class="nav-link">String formatting</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="print-and-string-formatting">Print and string formatting</h1>
+<p>One of the most tried and true debugging tools is
+<a href="https://docs.python.org/3/library/functions.html#print"><code>print</code></a>.</p>
+<div class="admonition attention">
+<p>Make liberal use of <code>print</code> to output text from your programs that 
+would be useful for troubleshooting and monitoring progress.</p>
+</div>
+<h2 id="simple-use-case">Simple use case</h2>
+<p>You can pass any value to <code>print</code> that can be represented as a string</p>
+<div class="admonition note">
+<p>Most types of data in Python can be represented as a string.</p>
+</div>
+<p><code>python
+print('Hello, World!')
+print(1)
+print(3.14)
+print(True)
+print(None)
+print([ 1, 2, 3 ])</code></p>
+<h2 id="string-formatting">String formatting</h2>
+<p><em>Format strings</em> allow you to create more complex strings containing plain text 
+and existing variables.</p>
+<div class="admonition tip">
+<p class="admonition-title">Read the documentation</p>
+<p>String formatting is a whole
+<a href="https://docs.python.org/3.4/library/string.html#format-specification-mini-language">mini-language</a> 
+within the Python language itself. I suggest referring to the 
+<a href="https://docs.python.org/3.4/library/string.html#format-string-syntax">official documentation</a> 
+for more.</p>
+</div>
+<h3 id="basic-example">Basic example</h3>
+<p>You define a format string like a any other string, except you must prefix the 
+string with a <code>f</code>. Within the format string, you can use curly braces <code>{}</code> 
+to reference a variable</p>
+<p><code>python
+a = 'World'
+print(f'Hello, {a}!')</code></p>
+<p>In this example, Python will substitute the placeholder <code>{a}</code> with the value 
+from the variable <code>a</code> which will result in the string <code>Hello, World!</code>.</p>
+<h3 id="real-world-example">Real world example</h3>
+<p>Format strings are sometimes used to dynamically build shell commands. For example</p>
+<p>```python
+files = [
+    ['subject_a.dcm', 'subject_a.nii.gz'],
+    ['subject_b.dcm', 'subject_b.nii.gz'],
+    ['subject_c.dcm', 'subject_c.nii.gz']
+]</p>
+<p>for infile, outfile in files:
+    command = f'mri_convert {infile} {outfile}'
+    print(command)
+```</p>
+<p>This will print the following shell commands </p>
+<p><code>text
+mri_convert subject_a.dcm subject_a.nii.gz
+mri_convert subject_b.dcm subject_b.nii.gz
+mri_convert subject_c.dcm subject_c.nii.gz</code></p>
+<h3 id="rounding-floats">Rounding <code>floats</code></h3>
+<p>It's common for a developer to specify how a <code>float</code> value should be displayed 
+within a formatted string. To do this, you can add a format specifier to your 
+placeholder using <code>{variable:specifier}</code> syntax.</p>
+<p>For example, if you want your format string to round the variable <code>pi</code> to 4 
+decimal places, you would append <code>0.4f</code> to <code>pi</code></p>
+<p><code>python
+pi = 3.1415926
+print(f'π rounded to 4 decimal places is {pi:0.4f}')</code></p>
+<p>For more information on format specifiers, refer to the official documentation 
+<a href="https://docs.python.org/3.4/library/string.html#format-specification-mini-language">here</a>.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

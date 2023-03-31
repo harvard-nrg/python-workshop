@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Virtual environments - Python for Neuroimaging</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Python for Neuroimaging</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Introduction</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../basics/" class="nav-link">Variables and primitive types</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../math/" class="nav-link">Math operators</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Data structures <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../list/" class="dropdown-item">List</a>
+</li>
+                                    
+<li>
+    <a href="../set/" class="dropdown-item">Set</a>
+</li>
+                                    
+<li>
+    <a href="../dict/" class="dropdown-item">Dict</a>
+</li>
+                                    
+<li>
+    <a href="../tuple/" class="dropdown-item">Tuple</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="../print/" class="nav-link">Print and string formatting</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Control flow <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../conditional/" class="dropdown-item">operators</a>
+</li>
+                                    
+<li>
+    <a href="../if/" class="dropdown-item">if</a>
+</li>
+                                    
+<li>
+    <a href="../for/" class="dropdown-item">for</a>
+</li>
+                                    
+<li>
+    <a href="../while/" class="dropdown-item">while</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="../functions/" class="nav-link">Functions</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../modules/" class="nav-link">Importing modules</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../subprocess/" class="nav-link">Subprocesses</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../cli/" class="nav-link">Writing command line tools</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../files/" class="nav-link">Reading and writing files</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">Virtual environments</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../formats/" class="nav-link">DICOM and NIFTI</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../learn/" class="nav-link">Machine learning primer</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../recommendations/" class="nav-link">Recommendations</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../nipype/" class="nav-link">Nipype</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../files/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../formats/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#virtual-environments" class="nav-link">Virtual environments</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#creating-a-virtual-environment" class="nav-link">Creating a virtual environment</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#activating-your-virtual-environment" class="nav-link">Activating your virtual environment</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#pip" class="nav-link">pip</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="virtual-environments">Virtual environments</h1>
+<p><em>Virtual environments</em> will allow you to install and try out as many different 
+Python packages as possible. </p>
+<h2 id="creating-a-virtual-environment">Creating a virtual environment</h2>
+<p>To create a virtual environment, execute the following <em>shell</em> command</p>
+<p><code>bash
+% python -m venv test</code></p>
+<p>This will create a directory named <code>test</code>.</p>
+<h2 id="activating-your-virtual-environment">Activating your virtual environment</h2>
+<p>To activate your virtual environment, execute the following <em>shell</em> command</p>
+<p><code>bash
+% source test/bin/activate</code></p>
+<p>You're now using an isolated/sandboxed Python installation under the <code>test</code> 
+directory. </p>
+<div class="admonition note">
+<p>You should notice that <code>which python</code> now points to the Python executable 
+that resided within your virtual environment.</p>
+</div>
+<h3 id="deactivate">deactivate</h3>
+<p>To deactivate the virtual environment, execute the <code>deactivate</code> <em>shell</em> command</p>
+<p><code>bash
+(test) % deactivate</code></p>
+<div class="admonition note">
+<p>You should notice that <code>which python</code> now points to the system installed 
+Python executable. </p>
+</div>
+<h2 id="pip"><code>pip</code></h2>
+<p>The main package installer for Python is
+<a href="https://pip.pypa.io/en/stable/"><code>pip</code></a>.</p>
+<h3 id="upgrade-pip">upgrade pip</h3>
+<p>For the rest of this tutorial, you should only run <code>pip</code> from within an 
+<em>activated virtual environment</em>. Before you proceed any further, you should 
+upgrade <code>pip</code></p>
+<p><code>bash
+(test) % pip install --upgrade pip</code></p>
+<p>Now you can install external packages such as <code>pydicom</code></p>
+<p><code>bash
+(test) % pip install pydicom</code></p>
+<h3 id="dependency-management">dependency management</h3>
+<p>You may notice that when you install an external package such as <code>pydicom</code>, 
+this triggers the installation of additional packages. This creates a 
+<em>dependency graph</em>. If we were to explore the dependency graph for the 
+<a href="https://github.com/harvard-nrg/yaxil"><code>yaxil</code></a>
+library, you would see the following</p>
+<div class="admonition note">
+<p>The following graph was rendered with
+<a href="https://pipenv.pypa.io/en/latest/"><code>pipenv</code></a></p>
+</div>
+<p><code>text
+yaxil==0.4.3
+  - arrow [required: Any, installed: 0.15.5]
+    - python-dateutil [required: Any, installed: 2.8.1]
+      - six [required: &gt;=1.5, installed: 1.14.0]
+  - lxml [required: Any, installed: 4.5.0]
+  - pyaml [required: Any, installed: 19.12.0]
+    - PyYAML [required: Any, installed: 5.3]
+  - pydicom [required: Any, installed: 1.4.1]
+  - requests [required: Any, installed: 2.22.0]
+    - certifi [required: &gt;=2017.4.17, installed: 2019.11.28]
+    - chardet [required: &gt;=3.0.2,&lt;3.1.0, installed: 3.0.4]
+    - idna [required: &gt;=2.5,&lt;2.9, installed: 2.8]
+    - urllib3 [required: &gt;=1.21.1,&lt;1.26,!=1.25.1,!=1.25.0, installed: 1.25.8]
+  - six [required: Any, installed: 1.14.0]</code></p>
+<p>You can see that <code>yaxil</code> depends on <code>arrow</code>, <code>lxml</code>, <code>pydicom</code>, <code>requests</code>, 
+and <code>six</code> and in turn, each of those dependencies have their own dependencies.</p>
+<p>Diving deeper, you'll see that <code>arrow</code> depends on <code>python-dateutil</code> which 
+in turn depends on <code>six &gt;= 1.5</code>. Coincidentally, <code>yaxil</code> also depends on <code>six</code> 
+and will accept <code>Any</code> version. But what if it didn't? If these two packages 
+had conflicting requirements, there would be a <em>dependency conflict</em>.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

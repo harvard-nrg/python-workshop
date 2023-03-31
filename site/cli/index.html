@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Writing command line tools - Python for Neuroimaging</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Python for Neuroimaging</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Introduction</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../basics/" class="nav-link">Variables and primitive types</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../math/" class="nav-link">Math operators</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Data structures <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../list/" class="dropdown-item">List</a>
+</li>
+                                    
+<li>
+    <a href="../set/" class="dropdown-item">Set</a>
+</li>
+                                    
+<li>
+    <a href="../dict/" class="dropdown-item">Dict</a>
+</li>
+                                    
+<li>
+    <a href="../tuple/" class="dropdown-item">Tuple</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="../print/" class="nav-link">Print and string formatting</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Control flow <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../conditional/" class="dropdown-item">operators</a>
+</li>
+                                    
+<li>
+    <a href="../if/" class="dropdown-item">if</a>
+</li>
+                                    
+<li>
+    <a href="../for/" class="dropdown-item">for</a>
+</li>
+                                    
+<li>
+    <a href="../while/" class="dropdown-item">while</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="../functions/" class="nav-link">Functions</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../modules/" class="nav-link">Importing modules</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../subprocess/" class="nav-link">Subprocesses</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">Writing command line tools</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../files/" class="nav-link">Reading and writing files</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../virtualenv/" class="nav-link">Virtual environments</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../formats/" class="nav-link">DICOM and NIFTI</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../learn/" class="nav-link">Machine learning primer</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../recommendations/" class="nav-link">Recommendations</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../nipype/" class="nav-link">Nipype</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../subprocess/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../files/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#writing-command-line-tools" class="nav-link">Writing command line tools</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#usrbinenv-python" class="nav-link">!/usr/bin/env python</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#command-line-arguments" class="nav-link">Command line arguments</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#argparse" class="nav-link">argparse</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#accessing-the-command-line-arguments" class="nav-link">accessing the command line arguments</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="writing-command-line-tools">Writing command line tools</h1>
+<p>To write a command line tool in Python, open a new plain text file named 
+<code>hello.py</code> and enter the following contents</p>
+<p>```python</p>
+<h1 id="usrbinenv-python">!/usr/bin/env python</h1>
+<p>print('Hello, World!')
+```</p>
+<p>Save the file and make it executable by executing the following shell command</p>
+<p><code>bash
+% chmod u+x hello.py</code></p>
+<p>Now you can execute your script from the command line</p>
+<p><code>bash
+% ./hello.py
+Hello, World!</code></p>
+<h2 id="command-line-arguments">Command line arguments</h2>
+<p>Imagine that you want to write a script to download data from your local 
+<a href="https://xnat.org">XNAT</a>
+installation. You'll need to accept the command line arguments <code>--hostname</code>, 
+<code>--session</code>, and <code>--output-dir</code></p>
+<p><code>bash
+% ./download.py --hostname xnat.example.com  \
+                --session LABEL \
+                --output-dir ./output</code></p>
+<p>Python includes a traditional C-style parser
+<a href="https://docs.python.org/3/library/getopt.html"><code>getopt</code></a>,
+but there's a more convenient way to define and parse command line 
+arguments using
+<a href="https://docs.python.org/3/library/argparse.html"><code>argparse</code></a>.</p>
+<h2 id="argparse">argparse</h2>
+<h3 id="defining-command-line-arguments">defining command line arguments</h3>
+<p>To define command line arguments, first import the <code>argparse</code> module and create 
+an instance of 
+<a href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser"><code>argparse.ArgumentParser</code></a> </p>
+<p>```python
+import argparse</p>
+<p>parser = argparse.ArgumentParser()
+```</p>
+<p>Now, you can add your arguments to the <code>parser</code> object by calling 
+<a href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser.add_argument"><code>parser.add_argument</code></a></p>
+<p><code>python
+parser = argparse.ArgumentParser()
+parser.add_argument('--hostname')
+parser.add_argument('--project')
+parser.add_argument('--label')
+parser.add_argument('--output-dir')</code></p>
+<h3 id="parsing-the-command-line">parsing the command line</h3>
+<p>To parse the command line arguments entered by the user, simply call
+<a href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser.parse_args"><code>parser.parse_args</code></a></p>
+<p><code>python
+args = parser.parse_args()</code></p>
+<h2 id="accessing-the-command-line-arguments">accessing the command line arguments</h2>
+<p>Each command line argument is automatically converted into a property on the 
+object returned by <code>parse_args()</code>. The name of the property is similar but 
+not identical to the name of the argument that was declared. There are two 
+translation rules to remember</p>
+<ul>
+<li>Remove any leading dashes e.g., <code>-</code> or <code>--</code>, from the argument name</li>
+<li>Replace any embedded dash <code>-</code> within the argument name with an underscore <code>_</code></li>
+</ul>
+<p><code>python
+print(f'host is {args.hostname}')
+print(f'project {args.project}')
+print(f'label is {args.label}')
+print(f'out_dir is {args.output_dir}')</code></p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
