@@ -27,7 +27,7 @@ nav:
   - 'Writing command line tools': cli.md
   - 'Reading and writing files': files.md
   - 'Virtual environments': virtualenv.md
+  - 'Nipype': nipype.md
   - 'DICOM and NIFTI': formats.md
   - 'Machine learning primer': learn.md
   - 'Recommendations': recommendations.md
-  - 'Nipype': nipype.md
