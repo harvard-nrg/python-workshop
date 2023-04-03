@@ -1,6 +1,8 @@
 site_name: Python for Neuroimaging
 theme:
   name: material
+  features:
+    - content.code.copy
 markdown_extensions:
   - admonition
   - codehilite
